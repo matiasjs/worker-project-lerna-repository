@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { AuthUserLogin } from '../../domains/AuthUsers/application/AuthUsersLogin';
-import { LoginDto } from './models/login.dto';
+import { LoginInputDto } from './models/login.model.dto';
 import { JwtService } from '@nestjs/jwt';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
@@ -13,8 +13,10 @@ export class LoginService {
     private readonly jwtService: JwtService,
   ) {}
 
-  public async login({ username, password }: LoginDto) {
+  public async login({ username, password }: LoginInputDto) {
     const user = await this.authUserLogin.invoke(username, password);
+
+    console.log('AAAAAAAAAAAAA', user);
 
     const accessToken = this.jwtService.sign(user);
     const expire = (this.jwtService.decode(accessToken) as any).exp;

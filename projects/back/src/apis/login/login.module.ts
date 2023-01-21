@@ -10,6 +10,7 @@ import { AuthUsersRepositoryMongodb } from '../../domains/AuthUsers/infrastructu
 import { AuthUsersRepository } from 'src/domains/AuthUsers/domain/AuthUsersRepository';
 import { AuthUserLogin } from 'src/domains/AuthUsers/application/AuthUsersLogin';
 import { AppController } from 'src/app.controller';
+import { MongodbConfig } from 'src/domains/Shared/infrastructure/MongodbConfig';
 
 @Module({
   imports: [
@@ -29,6 +30,17 @@ import { AppController } from 'src/app.controller';
   providers: [
     LoginService,
     AuthUserLogin,
+    {
+      provide: MongodbConfig,
+      inject: [authConfig.KEY],
+      useFactory: async (config: ConfigType<typeof authConfig>) =>
+        MongodbConfig.fromPrimitives({
+          host: config.mongodbHost,
+          port: config.mongodbPort,
+          db: config.mongodbDb,
+          collection: config.mongodbCollection,
+        }),
+    },
     { provide: AuthUsersRepository, useClass: AuthUsersRepositoryMongodb },
   ],
 })

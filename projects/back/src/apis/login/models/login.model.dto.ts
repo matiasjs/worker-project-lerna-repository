@@ -2,9 +2,9 @@ import { IsNotEmpty, IsString } from 'class-validator';
 
 import { ApiProperty } from '@nestjs/swagger';
 
-import { UserLoginInput } from 'shared-workers';
+import { UserLoginInput, UserLoginOutput } from 'shared-workers';
 
-export class LoginDto implements UserLoginInput {
+export class LoginInputDto implements UserLoginInput {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
@@ -16,9 +16,9 @@ export class LoginDto implements UserLoginInput {
   password: string;
 }
 
-export class LoginResponse {
+export class LoginResponseDto implements UserLoginOutput {
   @ApiProperty({ example: 'json.web.token' })
-  access_token: string;
+  accessToken: string;
 
   @ApiProperty({ example: 1234 })
   expire: number;
