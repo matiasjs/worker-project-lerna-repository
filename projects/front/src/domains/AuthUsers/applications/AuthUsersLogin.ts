@@ -2,9 +2,7 @@ import { AuthUsersRepository } from "../domain/AuthUserRepository";
 import { AuthUserToken } from "../domain/AuthUserToken";
 
 export class AuthUserLogin {
-  constructor(private readonly authUsersRepository: AuthUsersRepository) {
-    console.log("AuthUserLogin", Date.now());
-  }
+  constructor(private readonly authUsersRepository: AuthUsersRepository) {}
 
   async invoke(username: string, password: string): Promise<AuthUserToken> {
     const authUserToken = await this.authUsersRepository.login({
@@ -13,7 +11,8 @@ export class AuthUserLogin {
     });
 
     if (!authUserToken) {
-      throw Error("LA CONCHA DE TU HERMANA", authUserToken);
+      // TODO: dominizarlo(?)
+      throw Error("Error generico", authUserToken);
     }
 
     return authUserToken;

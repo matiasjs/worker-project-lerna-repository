@@ -1,4 +1,4 @@
-// TODO: investigar esta falopa
+// TODO: investigar esta mierd*
 import { InvalidArgumentError } from "shared-workers/src/domains/errors/InvalidArgumentError";
 
 export class AxiosConfig {
