@@ -1,0 +1,31 @@
+{
+  "name": "shared-workers",
+  "version": "0.0.0",
+  "description": "> TODO: description",
+  "author": "Matias Ringa <ringa.matias@gmail.com>",
+  "homepage": "https://github.com/matiasjs/worker-project-lerna-repository#readme",
+  "license": "ISC",
+  "main": "dist/index.js",
+  "typings": "dist/index.d.ts",
+  "directories": {
+    "dist": "dist",
+    "types": "types"
+  },
+  "files": [
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matiasjs/worker-project-lerna-repository.git"
+  },
+  "scripts": {
+    "tsc": "tsc",
+    "build": "tsc"
+  },
+  "bugs": {
+    "url": "https://github.com/matiasjs/worker-project-lerna-repository/issues"
+  },
+  "dependencies": {
+    "back": "^1.0.2"
+  }
+}

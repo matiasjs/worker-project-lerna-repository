@@ -1,0 +1,19 @@
+{
+  "name": "worker-project-lerna-repository",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:matiasjs/worker-project-lerna-repository.git",
+  "author": "Matias Ringa <ringa.matias@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "npx lerna run build",
+    "start": "npx lerna run dev"
+  },
+  "workspaces": [
+    "projects/*"
+  ],
+  "devDependencies": {
+    "lerna": "^6.4.1"
+  }
+}

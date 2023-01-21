@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "paths": {
+      "@projects/*": ["./projects/*"],
+      "@shared/*": ["./shared/*"]
+    }
+  }
+}
