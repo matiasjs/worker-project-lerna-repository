@@ -11,16 +11,22 @@ export class AuthUserLogin {
   async invoke(username: string, password: string): Promise<AuthUserResponse> {
     const authUser = await this.authUsersRepository.findByUsername(username);
 
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA', authUser);
+
     if (!authUser) {
       console.error(`Username <${username}> not found`);
       throw new AuthUserNotFoundError(username);
     }
 
-    if (authUser.password !== password) {
-      console.error(`Username <${username}> invalid credentials`);
+    if (authUser?.password !== password) {
+      console.error(
+        `Username <${username}> invalid credentials`,
+        authUser?.password,
+        password,
+      );
       throw new InvalidCredentialsError(username);
     }
 
-    return { username: authUser.username };
+    return { username: authUser.username, rol: authUser.rol };
   }
 }

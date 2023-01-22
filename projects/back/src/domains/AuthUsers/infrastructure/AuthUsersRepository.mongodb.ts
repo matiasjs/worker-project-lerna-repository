@@ -21,6 +21,29 @@ export class AuthUsersRepositoryMongodb
   }
 
   async findByUsername(username: string): Promise<Nullable<AuthUser>> {
-    return this.collection.findOne({ username });
+    const users = (await this.collection
+      .aggregate([
+        {
+          $match: {
+            username: username,
+          },
+        },
+        {
+          $lookup: {
+            from: 'roles',
+            localField: 'rolid',
+            foreignField: '_id',
+            as: 'rol',
+          },
+        },
+        {
+          $unwind: {
+            path: '$rol',
+          },
+        },
+      ])
+      .toArray()) as any;
+
+    return users[0];
   }
 }

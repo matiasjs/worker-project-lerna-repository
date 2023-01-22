@@ -37,8 +37,12 @@ import { MongodbConfig } from 'src/domains/Shared/infrastructure/MongodbConfig';
         MongodbConfig.fromPrimitives({
           host: config.mongodbHost,
           port: config.mongodbPort,
-          db: config.mongodbDb,
-          collection: config.mongodbCollection,
+          db: config.mongodbUsersDatabase,
+          collection: config.mongodbUsersCollection,
+          auth: {
+            username: config.mongodbUsername,
+            password: config.mongodbPassword,
+          },
         }),
     },
     { provide: AuthUsersRepository, useClass: AuthUsersRepositoryMongodb },
