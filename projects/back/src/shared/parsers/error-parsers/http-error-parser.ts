@@ -4,7 +4,7 @@ import { AyobaHttpException } from '../ayoba-http-exception';
 
 import { AbstractErrorParser } from './abstract-error-parser';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
-import { statusTextFromCode } from 'src/shared/utils/util';
+import { statusTextFromCode } from '@shared/utils/util';
 
 @Injectable()
 export class HttpErrorParser implements AbstractErrorParser {

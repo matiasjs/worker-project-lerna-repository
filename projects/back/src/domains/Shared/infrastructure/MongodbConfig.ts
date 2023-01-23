@@ -54,7 +54,9 @@ export class MongodbConfig {
 
   validate(): void {
     if (!this.host) {
-      throw new InvalidArgumentError(`MongodbConfig host is undefined`);
+      throw new InvalidArgumentError(
+        `MongodbConfig host is undefined ${JSON.stringify(this)}`,
+      );
     }
 
     if (!this.port) {

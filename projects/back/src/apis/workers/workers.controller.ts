@@ -3,7 +3,7 @@ import { ApiTags, ApiCreatedResponse, ApiOperation } from '@nestjs/swagger';
 
 import { WorkerDto, WorkerResponse } from './models/workers.dto';
 import { WorkersService } from './workers.service';
-import { JwtAuthGuard } from 'src/shared/guards/jwt.auth.guard';
+import { JwtAuthGuard } from '@shared/guards/jwt.auth.guard';
 
 @ApiTags('Workers')
 @Controller('v1/workers')

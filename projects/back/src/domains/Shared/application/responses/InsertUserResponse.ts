@@ -1,16 +1,17 @@
-export interface AuthUserResponse {
+export interface InsertUserResponse {
   _id?: any;
   email: string;
+  password: string;
   name: string;
   surname: string;
   rolid: string;
-  rol?: {
-    _id: string;
-    description: string;
-  };
   specializationid: string;
   specialization?: {
-    _id: string;
+    _id: any;
+    description: string;
+  };
+  rol?: {
+    _id?: any;
     description: string;
   };
 }
