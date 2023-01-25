@@ -6,7 +6,7 @@ import { JwtModule } from '@nestjs/jwt';
 
 import { ConfigType } from '@nestjs/config';
 import { authConfig } from './config/login.config';
-import { UsersRepositoryMongodb } from '../../domains/Users/infrastructure/AuthUsersRepository.mongodb';
+import { UsersRepositoryMongodb } from '../../domains/Users/infrastructure/UsersRepository.mongodb';
 import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
 import { UserLogin } from '@domains/Users/application/UsersLogin';
 import { UsersRepository } from '@domains/Users/domain/UsersRepository';

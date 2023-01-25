@@ -15,7 +15,4 @@ export const mongoConfig = registerAs('mongodb-config', () => ({
   mongodbPort: +process.env.MONGO_PORT,
   mongodbUsername: process.env.MONGO_USERNAME,
   mongodbPassword: process.env.MONGO_PASSWORD,
-  mongodbUsersDatabase:
-    process.env.MONGO_USERS_DATABASE || process.env.MONGO_DATABASE,
-  mongodbUsersCollection: process.env.MONGO_USERS_COLLECTION,
 }));

@@ -3,7 +3,7 @@ import { ConfigType } from '@nestjs/config';
 import { UsersService } from './users.service';
 import { UsersController } from './users.controller';
 import { usersConfig } from './config/users.config';
-import { UsersRepositoryMongodb } from '@domains/Users/infrastructure/AuthUsersRepository.mongodb';
+import { UsersRepositoryMongodb } from '@domains/Users/infrastructure/UsersRepository.mongodb';
 import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
 import { UsersRepository } from '@domains/Users/domain/UsersRepository';
 import { UserInsert } from '@domains/Users/application/UsersInsert';

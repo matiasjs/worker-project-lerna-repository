@@ -3,10 +3,9 @@ import { User } from '../domain/User';
 import { Injectable } from '@nestjs/common/decorators';
 
 import { Nullable } from 'shared-workers';
-import { MongodbRepository } from '../../../domains/Shared/infrastructure/MongodbRepository';
+import { MongodbRepository } from '../../Shared/infrastructure/MongodbRepository';
 import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
-import { ObjectId } from 'mongodb';
 
 @Injectable()
 export class UsersRepositoryMongodb
@@ -19,6 +18,10 @@ export class UsersRepositoryMongodb
     config: MongodbConfig,
   ) {
     super(logger, config);
+  }
+
+  findBySpecialization(specializationid: string): Promise<User[]> {
+    throw new Error('Method not implemented.');
   }
 
   async findByEmailLogin(email: string): Promise<Nullable<User>> {

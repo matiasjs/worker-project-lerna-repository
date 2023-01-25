@@ -16,12 +16,14 @@ import { CommonHttpExceptionFilter } from './shared/filters/http.filter';
 import { SharedModule } from './shared/common.module';
 import { UsersModule } from './apis/users/users.module';
 import { usersConfig } from './apis/users/config/users.config';
+import { RolesModule } from './apis/roles/roles.module';
+import { rolesConfig } from './apis/roles/config/roles.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [authConfig, usersConfig],
+      load: [authConfig, usersConfig, rolesConfig],
       envFilePath: '.env',
     }),
     LoggerModule.forRoot(),
@@ -30,6 +32,7 @@ import { usersConfig } from './apis/users/config/users.config';
     LoginModule,
     WorkersModule,
     UsersModule,
+    RolesModule,
   ],
   controllers: [AppController],
   providers: [
