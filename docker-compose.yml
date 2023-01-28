@@ -11,3 +11,10 @@ services:
       - ${MONGO_HOST_DATA}/db:/data/db
     ports:
       - "27017:27017"
+
+  redis:
+    image: "redis:latest"
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+    ports:
+      - "6379:6379"

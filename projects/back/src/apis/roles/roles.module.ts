@@ -7,6 +7,9 @@ import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
 import { RolesGetAll } from '@domains/roles/application/RolesGetAll';
 import { RolesRepositoryMongodb } from '@domains/roles/infrastructure/RolesRepository.mongodb';
 import { RolesRepository } from '@domains/roles/domain/RolRepository';
+import { RolesCreate } from '@domains/roles/application/RolesCreate';
+import { RedisConfig } from '@domains/Shared/infrastructure/RedisConfig';
+import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository';
 
 @Module({
   imports: [],
@@ -14,6 +17,9 @@ import { RolesRepository } from '@domains/roles/domain/RolRepository';
   providers: [
     RolesService,
     RolesGetAll,
+    RolesCreate,
+    RedisRepository,
+    // Mongodb
     {
       provide: MongodbConfig,
       inject: [rolesConfig.KEY],
@@ -30,6 +36,16 @@ import { RolesRepository } from '@domains/roles/domain/RolRepository';
         }),
     },
     { provide: RolesRepository, useClass: RolesRepositoryMongodb },
+    // Redis
+    {
+      provide: RedisConfig,
+      inject: [rolesConfig.KEY],
+      useFactory: async (config: ConfigType<typeof rolesConfig>) =>
+        RedisConfig.fromPrimitives({
+          readUrl: config.readUrl,
+          writeUrl: config.writeUrl,
+        }),
+    },
   ],
 })
 export class RolesModule {}
