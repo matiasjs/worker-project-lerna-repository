@@ -4,9 +4,9 @@ import { AuthUserToken } from "../domain/AuthUserToken";
 export class AuthUserLogin {
   constructor(private readonly authUsersRepository: AuthUsersRepository) {}
 
-  async invoke(username: string, password: string): Promise<AuthUserToken> {
+  async invoke(email: string, password: string): Promise<AuthUserToken> {
     const authUserToken = await this.authUsersRepository.login({
-      username,
+      email,
       password,
     });
 

@@ -1,24 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import "./App.css";
-import login from "./services/auth.service";
-import { authUserLogin } from "./services/factory.service";
+import Home from "./components/GlobalComponents/Home";
+import LoginForm from "./components/GlobalComponents/LoginForm";
 
 function App() {
-  const [accessToken, setAccessToken] = useState<any>("null");
+  const [logged, setLogged] = useState(false);
 
-  useEffect(() => {
-    getLogin();
-  }, []);
-
-  const getLogin = async () => {
-    await login("username", "password").then(setAccessToken);
-  };
-
-  return (
-    <div className="App">
-      <h2>Access Token:</h2> {accessToken}!
-    </div>
-  );
+  return <div className="App">{logged ? <Home /> : <LoginForm />}</div>;
 }
 
 export default App;

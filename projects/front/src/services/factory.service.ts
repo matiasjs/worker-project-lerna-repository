@@ -1,5 +1,5 @@
-import { AuthUserLogin } from "../domains/Users/applications/AuthUsersLogin";
-import { AuthUsersAxiosRepository } from "../domains/Users/infrastructure/AuthAxiosRepository";
+import { AuthUserLogin } from "../domains/AuthUsers/applications/AuthUsersLogin";
+import { AuthUsersAxiosRepository } from "../domains/AuthUsers/infrastructure/AuthAxiosRepository";
 import { AxiosConfig } from "../domains/Shared/infrastructure/AxiosConfig";
 import { AxiosRepository } from "../domains/Shared/infrastructure/AxiosRepository";
 import { WorkersGetAll } from "../domains/Workers/applications/WorkersGetAll";
