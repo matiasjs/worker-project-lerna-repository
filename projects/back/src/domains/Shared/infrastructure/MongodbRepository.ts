@@ -13,8 +13,13 @@ export class MongodbRepository {
     config: MongodbConfig,
   ) {
     config.validate();
+    config.host;
+    config.port;
+    config.db;
+    config.collection;
     this.mongoClient = new MongoClient(
       `mongodb://${config.host}:${config.port}`,
+      config.getMongoClientOptions(),
     );
     this.init(config);
   }

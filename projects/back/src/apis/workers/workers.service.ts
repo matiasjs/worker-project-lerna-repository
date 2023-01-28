@@ -1,7 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { AuthUserLogin } from '../../domains/AuthUsers/application/AuthUsersLogin';
 import { WorkerDto } from './models/workers.dto';
-import { JwtService } from '@nestjs/jwt';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
 @Injectable()

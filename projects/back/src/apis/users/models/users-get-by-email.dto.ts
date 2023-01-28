@@ -1,0 +1,57 @@
+import {
+  IsEmail,
+  IsNotEmpty,
+  IsOptional,
+  IsString,
+  IsStrongPassword,
+} from 'class-validator';
+
+import { ApiProperty } from '@nestjs/swagger';
+import { UserGetByEmailInput, UserGetByEmailOutput } from 'shared-workers';
+
+export class UserGetByEmailInputDto implements UserGetByEmailInput {
+  @ApiProperty()
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+}
+
+export class UserGetByEmailResponseDto implements UserGetByEmailOutput {
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  _id: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  email;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  surname: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  rolid: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  specializationid: string;
+
+  @ApiProperty()
+  @IsOptional()
+  rol?: any;
+
+  @ApiProperty()
+  @IsOptional()
+  specialization?: any;
+}

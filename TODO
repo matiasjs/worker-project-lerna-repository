@@ -1,0 +1,13 @@
+Back:
+    ✔ docker-compose para levantar la instancia de mongodb compartida con naza @done(23-01-22 20:45)
+    ✔ mejorar el manejo de errores @done(23-01-22 21:43)
+    ✔ agregar roles a los usuarios ( trabajador, persona, empresa ) @started(23-01-22 22:29) @done(23-01-23 17:10) @lasted(18h41m29s)
+    ☐ acceso al rol en los endpoints @Rol()
+    ☐ acceso al usuario logead en los endpoints @loggedUser()
+    ☐ crear dominios para cada tabla
+    ☐ crear endpoints
+    ☐ investigar el login de google
+
+Front:
+    ☐ Crear pantalla de login
+    ☐ Crear pantalla de registro

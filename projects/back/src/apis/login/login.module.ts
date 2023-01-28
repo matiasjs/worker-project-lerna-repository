@@ -5,12 +5,11 @@ import { LoginService } from './login.service';
 import { JwtModule } from '@nestjs/jwt';
 
 import { ConfigType } from '@nestjs/config';
-import { authConfig } from './config/auth.config';
-import { AuthUsersRepositoryMongodb } from '../../domains/AuthUsers/infrastructure/AuthUsersRepository.mongodb';
-import { AuthUsersRepository } from 'src/domains/AuthUsers/domain/AuthUsersRepository';
-import { AuthUserLogin } from 'src/domains/AuthUsers/application/AuthUsersLogin';
-import { AppController } from 'src/app.controller';
-import { MongodbConfig } from 'src/domains/Shared/infrastructure/MongodbConfig';
+import { authConfig } from './config/login.config';
+import { UsersRepositoryMongodb } from '../../domains/Users/infrastructure/UsersRepository.mongodb';
+import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
+import { UserLogin } from '@domains/Users/application/UsersLogin';
+import { UsersRepository } from '@domains/Users/domain/UsersRepository';
 
 @Module({
   imports: [
@@ -29,7 +28,7 @@ import { MongodbConfig } from 'src/domains/Shared/infrastructure/MongodbConfig';
   controllers: [LoginController],
   providers: [
     LoginService,
-    AuthUserLogin,
+    UserLogin,
     {
       provide: MongodbConfig,
       inject: [authConfig.KEY],
@@ -37,11 +36,15 @@ import { MongodbConfig } from 'src/domains/Shared/infrastructure/MongodbConfig';
         MongodbConfig.fromPrimitives({
           host: config.mongodbHost,
           port: config.mongodbPort,
-          db: config.mongodbDb,
-          collection: config.mongodbCollection,
+          db: config.mongodbUsersDatabase,
+          collection: config.mongodbUsersCollection,
+          auth: {
+            username: config.mongodbUsername,
+            password: config.mongodbPassword,
+          },
         }),
     },
-    { provide: AuthUsersRepository, useClass: AuthUsersRepositoryMongodb },
+    { provide: UsersRepository, useClass: UsersRepositoryMongodb },
   ],
 })
 export class LoginModule {}

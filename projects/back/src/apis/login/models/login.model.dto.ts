@@ -8,7 +8,7 @@ export class LoginInputDto implements UserLoginInput {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  username: string;
+  email: string;
 
   @ApiProperty()
   @IsString()

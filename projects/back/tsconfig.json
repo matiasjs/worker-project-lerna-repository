@@ -16,7 +16,13 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths": {
+      "@*": ["src/*"],
+      "@domains*": ["src/domains/*"],
+      "@api*": ["src/api/*"],
+      "@shared*": ["src/shared/*"]
+    }
   },
   "moduleNameMapper": {
     "^@domains/(.*)": "<rootDir>/domains/$1"

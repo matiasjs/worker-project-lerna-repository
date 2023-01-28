@@ -1,3 +1,4 @@
+import { MongoClientOptions } from 'mongodb';
 import { InvalidArgumentError } from 'shared-workers';
 
 interface MongodbConfigPrimitive {
@@ -5,10 +6,12 @@ interface MongodbConfigPrimitive {
   port: number;
   db: string;
   collection: string;
-  user?: string;
-  pass?: string;
+  auth?: {
+    username: string;
+    password: string;
+  };
   ssl?: boolean;
-  sslCA?: Buffer[];
+  sslCA?: string;
   keepAlive?: boolean;
   useNewUrlParser?: boolean;
   useUnifiedTopology?: boolean;
@@ -22,10 +25,9 @@ export class MongodbConfig {
     readonly port: number,
     readonly db: string,
     readonly collection: string,
-    readonly user?: string,
-    readonly pass?: string,
+    readonly auth?: { username: string; password: string },
     readonly ssl?: boolean,
-    readonly sslCA?: Buffer[],
+    readonly sslCA?: string,
     readonly keepAlive?: boolean,
     readonly useNewUrlParser?: boolean,
     readonly useUnifiedTopology?: boolean,
@@ -39,8 +41,7 @@ export class MongodbConfig {
       plainData.port,
       plainData.db,
       plainData.collection,
-      plainData.user,
-      plainData.pass,
+      plainData.auth,
       plainData.ssl,
       plainData.sslCA,
       plainData.keepAlive,
@@ -53,7 +54,9 @@ export class MongodbConfig {
 
   validate(): void {
     if (!this.host) {
-      throw new InvalidArgumentError(`MongodbConfig host is undefined`);
+      throw new InvalidArgumentError(
+        `MongodbConfig host is undefined ${JSON.stringify(this)}`,
+      );
     }
 
     if (!this.port) {
@@ -67,5 +70,18 @@ export class MongodbConfig {
     if (!this.collection) {
       throw new InvalidArgumentError(`MongodbConfig collection is undefined`);
     }
+  }
+
+  getMongoClientOptions(): MongoClientOptions {
+    return {
+      auth: this.auth,
+      ssl: this.ssl,
+      sslCA: this.sslCA,
+      keepAlive: this.keepAlive,
+      useNewUrlParser: this.useNewUrlParser,
+      useUnifiedTopology: this.useUnifiedTopology,
+      useCreateIndex: this.useCreateIndex,
+      useFindAndModify: this.useFindAndModify,
+    } as MongoClientOptions;
   }
 }
