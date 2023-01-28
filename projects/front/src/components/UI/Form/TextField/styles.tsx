@@ -8,6 +8,7 @@ export const FieldContainer = styled.div<{ height?: number }>`
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  margin: 12px 0;
 
   input[type="number"]::-webkit-inner-spin-button,
   input[type="number"]::-webkit-outer-spin-button {
@@ -26,7 +27,10 @@ export const TextFieldContainer = styled.div<TextFieldContainerI>`
   border-radius: 8px;
 `;
 
-export const InputContainer = styled.div``;
+export const InputContainer = styled.input`
+  height: 100%;
+  width: 100%;
+`;
 
 InputContainer;
 export const IconContainer = styled.div``;

@@ -7,10 +7,10 @@ import { UserLoginInput } from "shared-workers";
 export class AuthUsersAxiosRepository implements AuthUsersRepository {
   constructor(private readonly axiosInstace: AxiosRepository) {}
 
-  async login({ username, password }: UserLoginInput): Promise<AuthUserToken> {
+  async login({ email, password }: UserLoginInput): Promise<AuthUserToken> {
     const accessToken: string = await this.axiosInstace
       .post("/v1/login", {
-        username,
+        email,
         password,
       })
       .then(({ data }: { data: { accessToken: string; expire: number } }) => {

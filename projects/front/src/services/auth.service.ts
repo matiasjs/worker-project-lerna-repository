@@ -1,7 +1,7 @@
 import { authUserLogin } from "./factory.service";
 
-const login = async (username: string, password: string) => {
-  return authUserLogin.invoke(username, password);
+const login = async (email: string, password: string) => {
+  return authUserLogin.invoke(email, password);
 };
 
 export default login;
