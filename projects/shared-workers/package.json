@@ -26,6 +26,7 @@
     "url": "https://github.com/matiasjs/worker-project-lerna-repository/issues"
   },
   "dependencies": {
-    "back": "^1.0.2"
+    "back": "^1.0.2",
+    "styled-components": "^5.3.6"
   }
 }
