@@ -1,7 +1,7 @@
 import { Module, ValidationPipe } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigType } from '@nestjs/config';
 import { LoginModule } from './apis/login/login.module';
 import { authConfig } from './apis/login/config/login.config';
 
@@ -18,12 +18,14 @@ import { UsersModule } from './apis/users/users.module';
 import { usersConfig } from './apis/users/config/users.config';
 import { RolesModule } from './apis/roles/roles.module';
 import { rolesConfig } from './apis/roles/config/roles.config';
+import { JwtModule, JwtService } from '@nestjs/jwt';
+import { jwtConfig } from '@shared/configs/jwt.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [authConfig, usersConfig, rolesConfig],
+      load: [authConfig, usersConfig, rolesConfig, jwtConfig],
       envFilePath: '.env',
     }),
     LoggerModule.forRoot(),
@@ -36,6 +38,7 @@ import { rolesConfig } from './apis/roles/config/roles.config';
   ],
   controllers: [AppController],
   providers: [
+    JwtService,
     AppService,
     BasicStrategy,
     JwtStrategy,
@@ -52,5 +55,6 @@ import { rolesConfig } from './apis/roles/config/roles.config';
       useValue: new ValidationPipe({ transform: true }),
     },
   ],
+  exports: [JwtService],
 })
 export class AppModule {}

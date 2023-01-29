@@ -25,9 +25,7 @@ export class UsersRepositoryMongodb
   }
 
   async findByEmailLogin(email: string): Promise<Nullable<User>> {
-    let user = await this.collection.findOne({ email });
-
-    return User.fromPrimitives(user);
+    return this.findByEmail(email);
   }
 
   async findByEmail(email: string): Promise<Nullable<User>> {

@@ -4,3 +4,4 @@ export * from "./errors";
 export * from "./Nullable";
 export * from "./inputs";
 export * from "./outputs";
+export * from "./value-objects";

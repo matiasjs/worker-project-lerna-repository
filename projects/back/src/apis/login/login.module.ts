@@ -10,11 +10,12 @@ import { UsersRepositoryMongodb } from '../../domains/Users/infrastructure/Users
 import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
 import { UserLogin } from '@domains/Users/application/UsersLogin';
 import { UsersRepository } from '@domains/Users/domain/UsersRepository';
+import { jwtConfig } from '@shared/configs/jwt.config';
 
 @Module({
   imports: [
     JwtModule.registerAsync({
-      useFactory: (config: ConfigType<typeof authConfig>) => {
+      useFactory: (config: ConfigType<typeof jwtConfig>) => {
         return {
           secret: config.secret,
           signOptions: {
@@ -22,7 +23,7 @@ import { UsersRepository } from '@domains/Users/domain/UsersRepository';
           },
         };
       },
-      inject: [authConfig.KEY],
+      inject: [jwtConfig.KEY],
     }),
   ],
   controllers: [LoginController],
