@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common/decorators';
-import { RolesRepository } from '../domain/RolRepository';
+import { SpecializationsRepository } from '../domain/SpecializationRepository';
 import { RolesGetAllResponse } from '@domains/Shared/application/responses/RolesGetAllResponse';
 
 @Injectable()
-export class RolesGetAll {
-  constructor(private readonly rolesRepository: RolesRepository) {}
+export class SpecializationsGetAll {
+  constructor(private readonly rolesRepository: SpecializationsRepository) {}
 
   async invoke(): Promise<RolesGetAllResponse[]> {
     let users = await this.rolesRepository.getAll();

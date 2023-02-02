@@ -1,35 +1,33 @@
 import { Injectable } from '@nestjs/common';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
-import { RolesGetAllOutput } from 'shared-workers';
-import { RolesGetAll } from '@domains/roles/application/RolesGetAll';
+import { SpecializationsGetAllOutput } from 'shared-workers';
 import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository';
 import { RolesGetAllResponse } from '@domains/Shared/application/responses/RolesGetAllResponse';
-import { RolesCreate } from '@domains/roles/application/RolesCreate';
+import { SpecializationsGetAll } from '@domains/Specializations/application/SpecializationsGetAll';
 
 @Injectable()
-export class RolesService {
+export class SpecializationsService {
   // TODO: move to var envs
   private redisKeyRoles = 'redisKeyRoles';
 
   constructor(
-    @InjectPinoLogger(RolesService.name)
+    @InjectPinoLogger(SpecializationsService.name)
     private readonly logger: PinoLogger,
-    private readonly rolesGetAll: RolesGetAll,
-    private readonly rolesCreate: RolesCreate,
+    private readonly specializationsGetAll: SpecializationsGetAll,
     private readonly redisRepository: RedisRepository,
   ) {
     // TODO cache callback for roles
   }
 
-  public async getAll(): Promise<RolesGetAllOutput> {
+  public async getAll(): Promise<SpecializationsGetAllOutput> {
     const cachedRoles = await this.getFromCache();
 
     if (cachedRoles) {
       return cachedRoles;
     }
 
-    const roles = await this.rolesGetAll.invoke();
+    const roles = await this.specializationsGetAll.invoke();
 
     this.saveOnCache(roles).catch((error) => this.logger.error(error));
 
@@ -39,19 +37,10 @@ export class RolesService {
     }));
   }
 
-  public async createRol(): Promise<any> {
-    const rol = await this.rolesCreate.invoke();
-
-    this.deleteFromCache();
-
-    return {
-      _id: rol._id,
-      description: rol.description,
-    };
-  }
-
-  private async getFromCache(): Promise<RolesGetAllOutput> {
-    return this.redisRepository.get<RolesGetAllOutput>(this.redisKeyRoles);
+  private async getFromCache(): Promise<SpecializationsGetAllOutput> {
+    return this.redisRepository.get<SpecializationsGetAllOutput>(
+      this.redisKeyRoles,
+    );
   }
 
   private async saveOnCache(roles: RolesGetAllResponse[]): Promise<void> {
