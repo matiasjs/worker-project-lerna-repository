@@ -16,5 +16,9 @@
   ],
   "devDependencies": {
     "lerna": "^6.4.1"
+  },
+  "dependencies": {
+    "expo": "^47.0.13",
+    "react-native": "^0.71.2"
   }
 }
