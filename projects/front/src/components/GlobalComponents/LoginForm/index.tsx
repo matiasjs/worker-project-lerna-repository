@@ -1,4 +1,11 @@
-import { ErrorMsj, FormContainer, LoginContainer } from "./styles";
+import {
+  ButtonForm,
+  ErrorMsj,
+  FormContainer,
+  InputContainer,
+  LoginContainer,
+  LoginInput,
+} from "./styles";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
@@ -23,28 +30,28 @@ const LoginForm = () => {
   return (
     <LoginContainer>
       <FormContainer onSubmit={handleSubmit(onSubmit)}>
-        <div>
+        <InputContainer>
           <label>
             Email{" "}
             <ErrorMsj>
               {errors.email && <span>This field is required</span>}
             </ErrorMsj>
           </label>
-          <input {...register("email")} type="email" />
-        </div>
-        <div>
+          <LoginInput {...register("email")} type="email" />
+        </InputContainer>
+        <InputContainer>
           <label>
             Constraseña
             <ErrorMsj>
               {errors.password && <span>This field is required</span>}
             </ErrorMsj>
           </label>
-          <input
+          <LoginInput
             {...register("password", { required: true })}
             type="password"
           />
-        </div>
-        <input type="submit" />
+        </InputContainer>
+        <ButtonForm type="submit" />
       </FormContainer>
     </LoginContainer>
   );
