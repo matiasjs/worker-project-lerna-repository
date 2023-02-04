@@ -1,4 +1,3 @@
-import { UserLoginInput } from "shared-workers";
 import { Workers } from "./Workers";
 
 export abstract class WorkersRepository {

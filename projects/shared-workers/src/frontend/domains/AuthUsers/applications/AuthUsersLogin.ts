@@ -1,5 +1,5 @@
-import { AuthUsersRepository } from "../domain/AuthUserRepository";
-import { AuthUserToken } from "../domain/AuthUserToken";
+import { AuthUsersRepository } from "../domains/AuthUserRepository";
+import { AuthUserToken } from "../domains/AuthUserToken";
 
 export class AuthUserLogin {
   constructor(private readonly authUsersRepository: AuthUsersRepository) {}
@@ -12,7 +12,7 @@ export class AuthUserLogin {
 
     if (!authUserToken) {
       // TODO: dominizarlo(?)
-      throw Error("Error generico", authUserToken);
+      throw Error(`Error generico ${authUserToken}`);
     }
 
     return authUserToken;

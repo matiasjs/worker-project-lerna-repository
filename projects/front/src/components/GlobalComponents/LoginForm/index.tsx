@@ -1,24 +1,10 @@
 import { ErrorMsj, FormContainer, LoginContainer } from "./styles";
-import { useForm } from "react-hook-form";
+import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import * as yup from "yup";
+
 import login from "../../../services/auth.service";
-
-interface IFormInputs {
-  email: string;
-  password: number;
-}
-
-const schema = yup
-  .object({
-    email: yup.string().email().required(),
-    password: yup
-      .string()
-      .required("No password provided.")
-      .min(8, "Password is too short - should be 8 chars minimum.")
-      .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
-  })
-  .required();
+import schema from "./models/schema.yup";
+import IFormInputs from "./models/form-inputs.interface";
 
 const LoginForm = () => {
   const {
@@ -29,7 +15,8 @@ const LoginForm = () => {
     resolver: yupResolver(schema),
   });
 
-  const onSubmit = async (data: IFormInputs) => {
+  // TODO: arreglar el tipo de este data
+  const onSubmit = async (data: IFormInputs | FieldValues) => {
     await login(data.email, data.password);
   };
 

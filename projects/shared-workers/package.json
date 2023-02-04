@@ -31,5 +31,9 @@
     "react-native": "^0.71.2",
     "styled-components": "^5.3.6",
     "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.18",
+    "@types/yup": "^0.32.0"
   }
 }

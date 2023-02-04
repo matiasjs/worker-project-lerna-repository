@@ -1,4 +1,4 @@
 export * from "./applications/AuthUsersLogin";
-export * from "./domain/AuthUserRepository";
-export * from "./domain/AuthUserToken";
+export * from "./domains/AuthUserRepository";
+export * from "./domains/AuthUserToken";
 export * from "./infrastructure/AuthAxiosRepository";

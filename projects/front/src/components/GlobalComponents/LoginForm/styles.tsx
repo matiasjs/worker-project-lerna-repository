@@ -6,7 +6,7 @@ export const FormContainer = styled.form`
   display: flex;
   flex-direction: column;
   gap: 25px;
-  color: white;
+  color: #000;
 
   div {
     display: flex;
