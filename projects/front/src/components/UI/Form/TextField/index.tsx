@@ -7,7 +7,7 @@ import {
 } from "./styles";
 
 interface TextFieldI {
-  height?: number;
+  height: string;
   required: boolean;
   labelText?: string;
 }
