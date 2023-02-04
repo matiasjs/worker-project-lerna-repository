@@ -27,6 +27,9 @@
   },
   "dependencies": {
     "back": "^1.0.2",
-    "styled-components": "^5.3.6"
+    "expo": "^47.0.13",
+    "react-native": "^0.71.2",
+    "styled-components": "^5.3.6",
+    "yup": "^0.32.11"
   }
 }

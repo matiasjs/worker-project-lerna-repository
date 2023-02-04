@@ -1,0 +1,50 @@
+{
+  "name": "worker-project-native",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "expo start",
+    "android": "expo start --android",
+    "ios": "expo start --ios",
+    "web": "expo start --web"
+  },
+  "dependencies": {
+    "@types/react-native": "~0.70.6",
+    "expo": "~47.0.12",
+    "expo-status-bar": "~1.4.2",
+    "react": "18.1.0",
+    "react-native": "^0.71.2",
+    "react-native-dotenv": "^3.4.7",
+    "react-native-get-random-values": "^1.8.0",
+    "react-native-webview": "11.23.1",
+    "shared-workers": "^0.0.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.12.9",
+    "@tsconfig/react-native": "^2.0.3",
+    "@types/jest": "^29.4.0",
+    "@types/react": "^18.0.27",
+    "@types/react-test-renderer": "^18.0.0",
+    "babel-plugin-module-resolver": "^5.0.0",
+    "typescript": "^4.9.5"
+  },
+  "private": false,
+  "description": "> TODO: description",
+  "author": "Matias Ringa <ringa.matias@gmail.com>",
+  "homepage": "https://github.com/matiasjs/worker-project-lerna-repository#readme",
+  "license": "ISC",
+  "directories": {
+    "lib": "lib",
+    "test": "__tests__"
+  },
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/matiasjs/worker-project-lerna-repository.git"
+  },
+  "bugs": {
+    "url": "https://github.com/matiasjs/worker-project-lerna-repository/issues"
+  }
+}

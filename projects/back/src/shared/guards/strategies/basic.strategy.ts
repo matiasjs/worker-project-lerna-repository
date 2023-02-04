@@ -35,10 +35,7 @@ export class BasicStrategy extends PassportStrategy(Strategy, 'Basic') {
         const payload = await this.loggedUserFromBasicAuth(token);
 
         done(null, {
-          username: payload.username || null,
-          jid: payload.jid || null,
-          group: payload.group || null,
-          msisdn: payload.msisdn || null,
+          ...payload,
           token,
         });
       } catch (error) {

@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common/decorators';
 import { RolesRepository } from '../domain/RolRepository';
-import { RolesGetAllResponse } from '@domains/Shared/application/RolesGetAllResponse';
+import { RolesGetAllResponse } from '@domains/Shared/application/responses/RolesGetAllResponse';
 
 @Injectable()
 export class RolesGetAll {
