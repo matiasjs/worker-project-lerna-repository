@@ -11,3 +11,7 @@ Back:
 Front:
     ☐ Crear pantalla de login
     ☐ Crear pantalla de registro
+        ☐ formulario
+        ☐ validaciones
+        ☐ coneccion backend
+    ☐ hacer funcionar docker
