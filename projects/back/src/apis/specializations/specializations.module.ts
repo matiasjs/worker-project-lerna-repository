@@ -1,8 +1,8 @@
 import { Module } from '@nestjs/common';
 import { ConfigType } from '@nestjs/config';
-import { RolesService } from './roles.service';
-import { RolesController } from './roles.controller';
-import { rolesConfig } from './config/roles.config';
+import { SpecializationsService } from './specializations.service';
+import { SpecializationsController } from './specializations.controller';
+import { specializationsConfig } from './config/specializations.config';
 import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
 import { RolesGetAll } from '@domains/roles/application/RolesGetAll';
 import { RolesRepositoryMongodb } from '@domains/roles/infrastructure/RolesRepository.mongodb';
@@ -13,22 +13,22 @@ import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository'
 
 @Module({
   imports: [],
-  controllers: [RolesController],
+  controllers: [SpecializationsController],
   providers: [
-    RolesService,
+    SpecializationsService,
     RolesGetAll,
     RolesCreate,
     RedisRepository,
     // Mongodb
     {
       provide: MongodbConfig,
-      inject: [rolesConfig.KEY],
-      useFactory: async (config: ConfigType<typeof rolesConfig>) =>
+      inject: [specializationsConfig.KEY],
+      useFactory: async (config: ConfigType<typeof specializationsConfig>) =>
         MongodbConfig.fromPrimitives({
           host: config.mongodbHost,
           port: config.mongodbPort,
-          db: config.mongodbRolesDatabase,
-          collection: config.mongodbRolesCollection,
+          db: config.mongodbSpecializationsDatabase,
+          collection: config.mongodbSpecializationsCollection,
           auth: {
             username: config.mongodbUsername,
             password: config.mongodbPassword,
@@ -39,8 +39,8 @@ import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository'
     // Redis
     {
       provide: RedisConfig,
-      inject: [rolesConfig.KEY],
-      useFactory: async (config: ConfigType<typeof rolesConfig>) =>
+      inject: [specializationsConfig.KEY],
+      useFactory: async (config: ConfigType<typeof specializationsConfig>) =>
         RedisConfig.fromPrimitives({
           readUrl: config.readUrl,
           writeUrl: config.writeUrl,
