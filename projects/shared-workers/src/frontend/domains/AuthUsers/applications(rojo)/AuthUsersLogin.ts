@@ -1,5 +1,5 @@
-import { AuthUsersRepository } from "../domain/AuthUserRepository";
-import { AuthUserToken } from "../domain/AuthUserToken";
+import { AuthUsersRepository } from "../domain(verde)/AuthUserRepository";
+import { AuthUserToken } from "../domain(verde)/AuthUserToken";
 
 export class AuthUserLogin {
   constructor(private readonly authUsersRepository: AuthUsersRepository) {}
@@ -10,9 +10,11 @@ export class AuthUserLogin {
       password,
     });
 
+    console.log(email, password);
+
     if (!authUserToken) {
       // TODO: dominizarlo(?)
-      throw Error("Error generico", authUserToken);
+      throw Error(`Error generico ${authUserToken}`);
     }
 
     return authUserToken;

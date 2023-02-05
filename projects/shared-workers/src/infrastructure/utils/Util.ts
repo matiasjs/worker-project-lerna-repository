@@ -1,15 +1,15 @@
 export class Util {
   static isProd(): boolean {
-    return 'production' === process.env.NODE_ENV;
+    return "production" === process.env.NODE_ENV;
   }
 
   static isTest(): boolean {
-    return 'test' === process.env.NODE_ENV;
+    return "test" === process.env.NODE_ENV;
   }
 
   static chunk<T>(arr: T[], size: number): T[][] {
     return [...Array(Math.ceil(arr.length / size))].map((_, index) =>
-      arr.slice(size * index, size + size * index),
+      arr.slice(size * index, size + size * index)
     );
   }
 
@@ -22,11 +22,13 @@ export class Util {
     if (total === 0) {
       return 100;
     }
-    return invert ? Math.floor((1 - n / total) * 100) : Math.floor((n / total) * 100);
+    return invert
+      ? Math.floor((1 - n / total) * 100)
+      : Math.floor((n / total) * 100);
   }
 
   static readBool(str: string | boolean, def = false): boolean {
-    if (typeof str === 'boolean') {
+    if (typeof str === "boolean") {
       return str;
     }
 
@@ -34,11 +36,11 @@ export class Util {
       return def;
     }
 
-    if (str.toLowerCase().startsWith('t') || parseInt(str) > 0) {
+    if (str.toLowerCase().startsWith("t") || parseInt(str) > 0) {
       return true;
     }
 
-    if (str.toLowerCase().startsWith('f') || parseInt(str) === 0) {
+    if (str.toLowerCase().startsWith("f") || parseInt(str) === 0) {
       return false;
     }
 
@@ -46,7 +48,7 @@ export class Util {
   }
 
   static readInt(str: string | number, def: number = null): number {
-    if (typeof str === 'number') {
+    if (typeof str === "number") {
       return Math.round(str);
     }
     const parsedInt = parseInt(str, 10);
@@ -54,7 +56,7 @@ export class Util {
   }
 
   static readFloat(str: string | number, def: number = null): number {
-    if (typeof str === 'number') {
+    if (typeof str === "number") {
       return str;
     }
     const parsedFloat = parseFloat(str);
@@ -68,7 +70,7 @@ export class Util {
   static readJson<T>(json: string, def: T = null): T {
     try {
       const object = JSON.parse(json);
-      return typeof object === 'object' ? object : def;
+      return typeof object === "object" ? object : def;
     } catch {
       return def;
     }
@@ -91,14 +93,14 @@ export class Util {
   }
 
   static parseCsv = <T>(csv: string): T[] => {
-    const rows = csv.split('\n');
+    const rows = csv.split("\n");
     const columnNames = rows
-      .shift()
-      .split(',')
+      ?.shift()
+      .split(",")
       .map((name) => name.toLowerCase().trim());
 
     return rows.map((row) => {
-      return row.split(',').reduce((acc, current, index) => {
+      return row.split(",").reduce((acc, current, index) => {
         acc[columnNames[index]] = current.trim();
         return acc;
       }, {});
