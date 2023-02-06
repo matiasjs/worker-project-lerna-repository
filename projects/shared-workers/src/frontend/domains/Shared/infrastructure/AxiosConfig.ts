@@ -1,5 +1,5 @@
 // TODO: investigar esta mierd*
-import { InvalidArgumentError } from "shared-workers/src/domains/errors/InvalidArgumentError";
+import { InvalidArgumentError } from "../../../../domains/errors/InvalidArgumentError";
 
 export class AxiosConfig {
   constructor(

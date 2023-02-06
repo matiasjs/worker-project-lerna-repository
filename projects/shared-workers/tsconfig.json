@@ -4,7 +4,8 @@
     "allowJs": true,
     "outDir": "dist",
     "types": ["node"],
-    "typeRoots": ["node_modules/yup", "../node_modules/@types"]
+    "typeRoots": ["node_modules/yup", "../node_modules/@types"],
+    "lib": ["DOM"]
   },
   "include": ["src"],
   "exclude": ["node_modules", "dist/**/*"]

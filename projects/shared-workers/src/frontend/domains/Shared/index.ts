@@ -1,3 +1,3 @@
-export * from "./applications/GetDomainUseCase";
-export * from "./infrastructure/AxiosConfig";
-export * from "./infrastructure/AxiosRepository";
+export * from "./application";
+export * from "./domain";
+export * from "./infrastructure";

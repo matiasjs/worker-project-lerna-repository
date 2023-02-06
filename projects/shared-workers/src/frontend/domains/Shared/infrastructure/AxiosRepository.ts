@@ -1,7 +1,8 @@
 import axios, { AxiosInstance, RawAxiosRequestConfig } from "axios";
 import { AxiosConfig } from "./AxiosConfig";
+import { RequestRepository } from "../domain/RequestRepository";
 
-export class AxiosRepository {
+export class AxiosRepository implements RequestRepository {
   private readonly axios: AxiosInstance;
 
   constructor(private readonly config: AxiosConfig) {
