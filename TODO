@@ -6,12 +6,13 @@ Back:
     ✔ acceso al rol en los endpoints @Rol() @started(23-01-29 22:58) @done(23-01-30 00:16) @lasted(1h18m45s)
     ✔ acceso al usuario logead en los endpoints @loggedUser() @started(23-01-29 23:03) @done(23-01-30 00:16) @lasted(1h13m46s)
     ☐ cambiar specialization por guild ( gremio )
+    ☐ modificar las estructura de datos para que funcione el mvp
     ☐ crear dominios para cada tabla
     ☐ investigar el login de google
 
 Front:
     ☐ Crear pantalla de login
-    ☐ Crear un webStorage domain, y el localstorage.repository.ts @started(23-02-04 21:50)
+    ✔ Crear un webStorage domain, y el localstorage.repository.ts @started(23-02-04 21:50) @done(23-02-06 19:22) @lasted(1d21h32m57s)
         ☐ Guardar accessToken en el localStorage
     ☐ Crear pantalla de registro
         ☐ formulario
