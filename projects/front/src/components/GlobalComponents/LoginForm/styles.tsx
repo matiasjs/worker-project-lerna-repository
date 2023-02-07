@@ -36,6 +36,10 @@ export const LoginInput = styled.input`
   padding: 0 24px;
   font-family: " Poppins ";
 
+  &::focus {
+    border: 1px solid #aaaaaa;
+  }
+
   input[type="email"] {
     font-family: "Poppins";
     font-size: 32px;
