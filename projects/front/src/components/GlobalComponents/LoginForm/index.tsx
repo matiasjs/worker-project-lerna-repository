@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import {
   ButtonForm,
   ErrorMsj,
@@ -7,13 +8,18 @@ import {
   LoginInput,
 } from "./styles";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+=======
+import { ErrorMsj, FormContainer, LoginContainer } from "./styles";
+import { FieldValues, useForm } from "react-hook-form";
+>>>>>>> 261f1b9390c8e8079a7f9212a55be3ec619e1b1e
 import { yupResolver } from "@hookform/resolvers/yup";
 
-import login from "../../../services/auth.service";
 import schema from "./models/schema.yup";
 import IFormInputs from "./models/form-inputs.interface";
+import usersService from "../../../services/users.service";
 
 const LoginForm = () => {
+  const { login } = usersService();
   const {
     register,
     handleSubmit,
