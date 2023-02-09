@@ -1,6 +1,8 @@
 import { WebStorageRepository } from "../domain/WebStorageRepository";
 
 export class LocalStorageRepository implements WebStorageRepository {
+  constructor() {}
+
   save(key: string, data: any): void {
     localStorage.setItem(key, JSON.stringify(data));
   }
