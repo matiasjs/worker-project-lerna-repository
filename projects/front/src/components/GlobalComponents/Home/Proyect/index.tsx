@@ -1,6 +1,6 @@
 import { ProyectsContainer } from "./styles";
 
-const Proyect = ({ content }) => {
+const Proyect = ({ content }: any) => {
   return (
     <ProyectsContainer>
       <>{content}</>

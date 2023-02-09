@@ -2,9 +2,14 @@ import { Injectable } from '@nestjs/common/decorators';
 import { ProjectsRepository } from '../domain/ProjectRepository';
 import { Project } from '../domain/Project';
 import { ProjectsCreateResponse } from '@domains/Shared/application/responses/ProjectsCreateResponse';
+import { Address } from 'shared-workers';
 
 interface Params {
+  name: string;
+  address: Address;
   description: string;
+  workersIds?: string[];
+  workers?: any[];
 }
 
 @Injectable()

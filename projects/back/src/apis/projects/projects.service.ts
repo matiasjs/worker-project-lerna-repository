@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
-import { UserInsert } from '@domains/Users/application/UsersInsert';
 import { ProjectsCreateInput, ProjectsCreateOutput } from 'shared-workers';
 import { ProjectsCreate } from '@domains/Projects/application/ProjectsCreate';
 

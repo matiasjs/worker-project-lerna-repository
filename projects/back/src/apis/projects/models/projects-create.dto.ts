@@ -1,7 +1,11 @@
 import { IsNotEmpty, IsString } from 'class-validator';
 
 import { ApiProperty } from '@nestjs/swagger';
-import { ProjectsCreateInput, ProjectsCreateOutput } from 'shared-workers';
+import {
+  Address,
+  ProjectsCreateInput,
+  ProjectsCreateOutput,
+} from 'shared-workers';
 
 export class ProjectsCreateResponseDto implements ProjectsCreateOutput {
   @ApiProperty()
@@ -20,4 +24,18 @@ export class ProjectsCreateRequestDto implements ProjectsCreateInput {
   @IsString()
   @IsNotEmpty()
   description;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  name: string;
+
+  @ApiProperty()
+  @IsNotEmpty()
+  address: Address;
+
+  @ApiProperty()
+  @IsString({ each: true })
+  @IsNotEmpty()
+  workersIds?: string[];
 }

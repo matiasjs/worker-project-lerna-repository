@@ -26,11 +26,7 @@
     "url": "https://github.com/matiasjs/worker-project-lerna-repository/issues"
   },
   "dependencies": {
-    "back": "^1.0.2",
-    "expo": "^47.0.13",
-    "react-native": "^0.71.2",
-    "styled-components": "^5.3.6",
-    "yup": "^0.32.11"
+    "styled-components": "^5.3.6"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",
