@@ -5,9 +5,9 @@ Back:
     ✔ crear capa de cache para servicios como el de roles, tipos de trabajadores @done(23-01-28 22:57)
     ✔ acceso al rol en los endpoints @Rol() @started(23-01-29 22:58) @done(23-01-30 00:16) @lasted(1h18m45s)
     ✔ acceso al usuario logead en los endpoints @loggedUser() @started(23-01-29 23:03) @done(23-01-30 00:16) @lasted(1h13m46s)
+    ☐ cambiar specialization en los users a un array @started(23-02-12 03:01)
+    ☐ modificar las estructura de datos para que funcione el mvp @started(23-02-09 20:25)
     ☐ cambiar specialization por guild ( gremio )
-    ☐ modificar las estructura de datos para que funcione el mvp
-    ☐ crear dominios para cada tabla
     ☐ investigar el login de google
 
 Front:

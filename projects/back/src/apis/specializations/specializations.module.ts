@@ -4,20 +4,18 @@ import { SpecializationsService } from './specializations.service';
 import { SpecializationsController } from './specializations.controller';
 import { specializationsConfig } from './config/specializations.config';
 import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
-import { RolesGetAll } from '@domains/Roles/application/RolesGetAll';
-import { RolesRepositoryMongodb } from '@domains/Roles/infrastructure/RolesRepository.mongodb';
-import { RolesRepository } from '@domains/Roles/domain/RolRepository';
-import { RolesCreate } from '@domains/Roles/application/RolesCreate';
 import { RedisConfig } from '@domains/Shared/infrastructure/RedisConfig';
 import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository';
+import { SpecializationsRepository } from '@domains/Specializations/domain/SpecializationRepository';
+import { SpecializationsRepositoryMongodb } from '@domains/Specializations/infrastructure/SpecializationsRepository.mongodb';
+import { SpecializationsGetAll } from '@domains/Specializations/application/SpecializationsGetAll';
 
 @Module({
   imports: [],
   controllers: [SpecializationsController],
   providers: [
     SpecializationsService,
-    RolesGetAll,
-    RolesCreate,
+    SpecializationsGetAll,
     RedisRepository,
     // Mongodb
     {
@@ -35,7 +33,10 @@ import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository'
           },
         }),
     },
-    { provide: RolesRepository, useClass: RolesRepositoryMongodb },
+    {
+      provide: SpecializationsRepository,
+      useClass: SpecializationsRepositoryMongodb,
+    },
     // Redis
     {
       provide: RedisConfig,
@@ -48,4 +49,4 @@ import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository'
     },
   ],
 })
-export class RolesModule {}
+export class SpecializationsModule {}

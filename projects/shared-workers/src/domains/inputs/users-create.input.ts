@@ -3,6 +3,7 @@ export interface UserCreateInput {
   email: string;
   password: string;
   surname: string;
-  rolid: string;
-  specializationid: string;
+  rank: number;
+  rolId: string;
+  specializationsId: string[];
 }

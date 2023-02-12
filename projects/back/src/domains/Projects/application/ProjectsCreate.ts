@@ -8,6 +8,7 @@ interface Params {
   name: string;
   address: Address;
   description: string;
+  ownerId: string;
   workersIds?: string[];
   workers?: any[];
 }
@@ -21,6 +22,13 @@ export class ProjectsCreate {
 
     project = await this.projectsRepository.create(project);
 
-    return project;
+    const primitive = project.toPrimitives();
+
+    return {
+      ...primitive,
+      _id: primitive._id,
+      workers: primitive.workers,
+      workersIds: primitive.workersIds,
+    };
   }
 }

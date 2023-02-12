@@ -4,8 +4,9 @@ export interface UserCreateOutput {
   email: string;
   password: string;
   surname: string;
-  rolid: string;
-  specializationid: string;
+  rank: number;
+  rolId: string;
+  specializationsId: string[];
   rol?: any;
-  specialization?: any;
+  specializations?: any[];
 }
