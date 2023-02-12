@@ -4,7 +4,7 @@ export interface LoggedUser {
   password: string;
   name: string;
   surname: string;
-  rolid: string;
+  rolId: string;
   rol?: {
     _id: string;
     description: string;

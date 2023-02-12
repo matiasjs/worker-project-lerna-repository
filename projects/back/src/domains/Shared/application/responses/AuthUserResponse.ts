@@ -4,7 +4,7 @@ export interface AuthUserResponse {
   name: string;
   surname: string;
   rank: number;
-  rolid: string;
+  rolId: string;
   rol?: {
     _id: string;
     description: string;

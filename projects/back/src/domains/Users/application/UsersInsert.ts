@@ -9,7 +9,7 @@ interface UserInserInput {
   name: string;
   surname: string;
   rank: number;
-  rolid: string;
+  rolId: string;
   specializationsId: string[];
 }
 

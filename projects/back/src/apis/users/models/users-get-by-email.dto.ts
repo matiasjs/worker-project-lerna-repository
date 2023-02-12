@@ -46,7 +46,7 @@ export class UserGetByEmailResponseDto implements UserGetByEmailOutput {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  rolid: string;
+  rolId: string;
 
   @ApiProperty()
   @IsString()

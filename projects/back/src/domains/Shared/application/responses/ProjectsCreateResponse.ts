@@ -5,7 +5,7 @@ export interface ProjectsCreateWorkerResponse {
   password: string;
   surname: string;
   rank: number;
-  rolid: string;
+  rolId: string;
   specializationsId: string[];
   rol: any;
   specializations: any[];

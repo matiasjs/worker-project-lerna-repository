@@ -47,7 +47,7 @@ export class UsersRepositoryMongodb
         {
           $lookup: {
             from: 'roles',
-            localField: 'rolid',
+            localField: 'rolId',
             foreignField: '_id',
             as: 'rol',
           },

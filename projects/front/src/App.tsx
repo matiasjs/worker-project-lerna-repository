@@ -5,7 +5,7 @@ import LoginForm from "./components/GlobalComponents/LoginForm";
 import DIProvider from "./contexts/dependency-injection.context";
 
 function App() {
-  const [logged, setLogged] = useState(true);
+  const [logged, setLogged] = useState(false);
 
   return (
     <DIProvider>
