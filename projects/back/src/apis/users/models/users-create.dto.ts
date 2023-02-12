@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   IsStrongPassword,
@@ -30,15 +31,20 @@ export class UserCreateInputDto implements UserCreateInput {
   @IsNotEmpty()
   surname: string;
 
-  @ApiProperty()
-  @IsString()
+  @ApiProperty({ default: 0 })
+  @IsNumber()
   @IsNotEmpty()
-  rolid: string;
+  rank: number;
 
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  specializationid: string;
+  rolId: string;
+
+  @ApiProperty()
+  @IsString({ each: true })
+  @IsNotEmpty()
+  specializationsId: string[];
 }
 
 export class UserCreateResponseDto implements UserCreateOutput {
@@ -68,14 +74,19 @@ export class UserCreateResponseDto implements UserCreateOutput {
   surname: string;
 
   @ApiProperty()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  rolid: string;
+  rank: number;
 
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  specializationid: string;
+  rolId: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  specializationsId: string[];
 
   @ApiProperty()
   @IsOptional()
@@ -83,5 +94,5 @@ export class UserCreateResponseDto implements UserCreateOutput {
 
   @ApiProperty()
   @IsOptional()
-  specialization?: any;
+  specializations?: any[];
 }

@@ -1,15 +1,15 @@
-export interface AuthUserResponse {
+export interface LoggedUser {
   _id?: any;
   email: string;
+  password: string;
   name: string;
   surname: string;
-  rank: number;
   rolid: string;
   rol?: {
     _id: string;
     description: string;
   };
-  specializationsId: string[];
+  specializationsId: string;
   specializations?: {
     _id: string;
     description: string;

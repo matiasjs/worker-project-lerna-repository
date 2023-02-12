@@ -8,8 +8,9 @@ interface UserInserInput {
   password: string;
   name: string;
   surname: string;
+  rank: number;
   rolid: string;
-  specializationid: string;
+  specializationsId: string[];
 }
 
 @Injectable()

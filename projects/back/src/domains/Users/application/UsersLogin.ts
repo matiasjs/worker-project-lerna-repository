@@ -9,7 +9,9 @@ export class UserLogin {
   constructor(private readonly usersRepository: UsersRepository) {}
 
   async invoke(email: string, password: string): Promise<AuthUserResponse> {
-    let user = await this.usersRepository.findByEmailLogin(email);
+    let user = await this.usersRepository
+      .findByEmailLogin(email)
+      .catch((_error) => {});
 
     if (!user) {
       console.error(`Username <${email}> not found`);

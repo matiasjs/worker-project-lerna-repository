@@ -20,7 +20,7 @@ export class UsersRepositoryMongodb
     super(logger, config);
   }
 
-  findBySpecialization(specializationid: string): Promise<User[]> {
+  findBySpecialization(specializationId: string): Promise<User[]> {
     throw new Error('Method not implemented.');
   }
 
@@ -39,9 +39,9 @@ export class UsersRepositoryMongodb
         {
           $lookup: {
             from: 'specializations',
-            localField: 'specializationid',
+            localField: 'specializationsId',
             foreignField: '_id',
-            as: 'specialization',
+            as: 'specializations',
           },
         },
         {
@@ -54,7 +54,7 @@ export class UsersRepositoryMongodb
         },
         {
           $unwind: {
-            path: '$specialization',
+            path: '$specializations',
           },
         },
         {
@@ -65,12 +65,14 @@ export class UsersRepositoryMongodb
       ])
       .toArray()) as any;
 
+    console.log('!!!!!!!!!!!!!!!!!!!!!!!!', email, users);
+
     return User.fromPrimitives(users[0]);
   }
 
   async insert(user: User): Promise<Nullable<User>> {
     return this.collection
-      .insertOne(user.toMongodb())
+      .insertOne(user.toPrimitivesMongodb())
       .then(({ insertedId }) => {
         return User.fromPrimitives({
           ...user.toPrimitives(),

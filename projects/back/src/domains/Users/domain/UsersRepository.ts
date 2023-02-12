@@ -3,7 +3,7 @@ import { Nullable } from 'shared-workers';
 
 export abstract class UsersRepository {
   abstract findBySpecialization(
-    specializationid: string,
+    specializationId: string,
   ): Promise<Nullable<User[]>>;
   abstract findByEmailLogin(email: string): Promise<Nullable<User>>;
   abstract findByEmail(email: string): Promise<Nullable<User>>;
