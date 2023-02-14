@@ -65,8 +65,6 @@ export class UsersRepositoryMongodb
       ])
       .toArray()) as any;
 
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!', email, users);
-
     return User.fromPrimitives(users[0]);
   }
 

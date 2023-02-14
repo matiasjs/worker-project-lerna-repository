@@ -11,7 +11,7 @@ import { AuthenticatedUserGuard } from '@shared/guards/authenticated-user-guard'
 
 @ApiTags('Specializations')
 @Controller('v1/specializations')
-@UseGuards(OwnAuthGuard, RolesGuard, AuthenticatedUserGuard)
+// @UseGuards(OwnAuthGuard, RolesGuard, AuthenticatedUserGuard)
 export class SpecializationsController {
   constructor(
     private readonly specializationsService: SpecializationsService,
@@ -20,7 +20,7 @@ export class SpecializationsController {
   @ApiOperation({ description: 'Get all specializations' })
   @ApiCreatedResponse({ type: SpecializationsGetAllResponseDto })
   @Get('')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   async getAllSpecializations(): Promise<SpecializationsGetAllResponseDto> {
     return this.specializationsService.getAll();
   }

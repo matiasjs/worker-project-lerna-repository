@@ -13,14 +13,14 @@ import { AuthenticatedUserGuard } from '@shared/guards/authenticated-user-guard'
 
 @ApiTags('Roles')
 @Controller('v1/roles')
-@UseGuards(OwnAuthGuard, RolesGuard, AuthenticatedUserGuard)
+// @UseGuards(OwnAuthGuard, RolesGuard, AuthenticatedUserGuard)
 export class RolesController {
   constructor(private readonly rolesService: RolesService) {}
 
   @ApiOperation({ description: 'Get all roles' })
   @ApiCreatedResponse({ type: RolesGetAllResponseDto })
   @Get('')
-  @UseGuards(JwtAuthGuard)
+  // @UseGuards(JwtAuthGuard)
   async getUSerByEmail(): Promise<RolesGetAllResponseDto> {
     return this.rolesService.getAll();
   }

@@ -14,12 +14,7 @@ export class LoginService {
   ) {}
 
   public async login({ email, password }: LoginInputDto) {
-    console.log('000000000000000');
-
     const user = await this.authUserLogin.invoke(email, password);
-
-    console.log('AAAAAAAAAAAAAAA');
-
     const accessToken = this.jwtService.sign(user);
     const expire = (this.jwtService.decode(accessToken) as any).exp;
 
