@@ -3,15 +3,15 @@ import { EnumValueObject } from "./EnumValueObject";
 
 export enum RolesEnum {
   admin = "admin",
-  account = "account",
-  company = "company",
+  user = "user",
+  business = "business",
   worker = "worker",
 }
 
 export const RolesWhiteList: RolesEnum[] = [
   RolesEnum.admin,
-  RolesEnum.account,
-  RolesEnum.company,
+  RolesEnum.user,
+  RolesEnum.business,
   RolesEnum.worker,
 ];
 

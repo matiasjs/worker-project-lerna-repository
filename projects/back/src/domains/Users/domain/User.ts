@@ -8,7 +8,7 @@ interface UserPrimitives {
   name: string;
   surname: string;
   rank: number;
-  rolid: string;
+  rolId: string;
   rol?: {
     _id: string;
     description: string;
@@ -27,7 +27,7 @@ interface UserPrimitivesMongoDb {
   name: string;
   surname: string;
   rank: number;
-  rolid: ObjectId;
+  rolId: ObjectId;
   specializationsId: ObjectId[];
 }
 
@@ -39,7 +39,7 @@ export class User extends AggregateRoot {
     readonly name: string,
     readonly surname: string,
     readonly rank: number,
-    readonly rolid: string,
+    readonly rolId: string,
     readonly specializationsId: string[],
     readonly rol?: { _id: string; description: string },
     readonly specializations?: { _id: string; description: string }[],
@@ -55,7 +55,7 @@ export class User extends AggregateRoot {
       plainData.name,
       plainData.surname,
       plainData.rank,
-      plainData.rolid?.toString() || plainData.rolid,
+      plainData.rolId?.toString() || plainData.rolId,
       plainData.specializationsId?.map((spe) => spe.toString()) ||
         plainData.specializationsId,
       plainData.rol,
@@ -71,7 +71,7 @@ export class User extends AggregateRoot {
       name: this.name,
       surname: this.surname,
       rank: this.rank,
-      rolid: this.rolid,
+      rolId: this.rolId,
       specializationsId: this.specializationsId,
       rol: this.rol,
       specializations: this.specializations,
@@ -86,7 +86,7 @@ export class User extends AggregateRoot {
       name: this.name,
       surname: this.surname,
       rank: this.rank,
-      rolid: new ObjectId(this.rolid),
+      rolId: new ObjectId(this.rolId),
       specializationsId: this.specializationsId.map(
         (specializationId) => new ObjectId(specializationId),
       ),

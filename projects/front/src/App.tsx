@@ -1,16 +1,28 @@
-import { useState } from "react";
 import "./App.css";
-import Home from "./components/GlobalComponents/Home";
-import LoginForm from "./components/GlobalComponents/LoginForm";
 import DIProvider from "./contexts/dependency-injection.context";
+import AppRoutes from "./Routes";
+
+import { resources } from "shared-workers";
+
+import i18n from "i18next";
+import { useTranslation, initReactI18next } from "react-i18next";
+
+i18n.use(initReactI18next).init({
+  resources,
+  lng: "es",
+  fallbackLng: "es",
+  interpolation: {
+    escapeValue: false,
+  },
+});
 
 function App() {
-  const [logged, setLogged] = useState(true);
-
   return (
-    <DIProvider>
-      <div className="App">{logged ? <Home /> : <LoginForm />}</div>
-    </DIProvider>
+    <>
+      <DIProvider>
+        <AppRoutes />
+      </DIProvider>
+    </>
   );
 }
 

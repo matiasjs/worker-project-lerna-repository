@@ -19,7 +19,8 @@ Front:
         ☐ validaciones
         ☐ coneccion backend
     ☐ hacer funcionar docker
+    ☐ cambiar authUser por User
 
 Native:
-    ✔ Instalar @done(23-02-03 19:26)
-    ☐ Crear pantalla de login
+    ✘ Instalar @cancelled(23-02-13 01:41)
+    ✘ Crear pantalla de login @cancelled(23-02-13 01:41)

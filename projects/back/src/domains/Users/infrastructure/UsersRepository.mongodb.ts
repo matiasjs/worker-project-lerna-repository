@@ -47,7 +47,7 @@ export class UsersRepositoryMongodb
         {
           $lookup: {
             from: 'roles',
-            localField: 'rolid',
+            localField: 'rolId',
             foreignField: '_id',
             as: 'rol',
           },
@@ -64,8 +64,6 @@ export class UsersRepositoryMongodb
         },
       ])
       .toArray()) as any;
-
-    console.log('!!!!!!!!!!!!!!!!!!!!!!!!', email, users);
 
     return User.fromPrimitives(users[0]);
   }

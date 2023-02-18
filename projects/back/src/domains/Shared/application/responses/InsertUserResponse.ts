@@ -5,7 +5,7 @@ export interface InsertUserResponse {
   name: string;
   surname: string;
   rank: number;
-  rolid: string;
+  rolId: string;
   specializationsId: string[];
   specializations?: {
     _id: any;

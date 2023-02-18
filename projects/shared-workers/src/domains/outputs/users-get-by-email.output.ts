@@ -4,7 +4,7 @@ export interface UserGetByEmailOutput {
   email: string;
   surname: string;
   rank: number;
-  rolid: string;
+  rolId: string;
   specializationsId: string[];
   rol?: any;
   specializations?: any[];
