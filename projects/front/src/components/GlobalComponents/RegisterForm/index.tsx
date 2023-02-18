@@ -8,17 +8,28 @@ import {
   SelectInput,
   SelectMulti,
 } from "./styles";
+import { useTranslation } from "react-i18next";
 import { useForm, Controller } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import schema from "./models/schema.yup";
 import rolesService from "../../../services/roles.service";
 import { useEffect, useState } from "react";
-import { RolesGetAllOutput, SpecializationsGetAllOutput } from "shared-workers";
+import {
+  RolesEnum,
+  RolesGetAllOutput,
+  SpecializationsGetAllOutput,
+} from "shared-workers";
 import guildsService from "../../../services/guilds.service";
 import IFormInputs from "./models/register-form-inputs.interface";
 
-const RegisterForm = () => {
+interface Props {
+  rol: RolesEnum;
+}
+
+const RegisterForm = ({ rol }: Props) => {
+  const { t } = useTranslation();
+
   const [roles, setRoles] = useState<RolesGetAllOutput>([]);
   const [guilds, setGuilds] = useState<SpecializationsGetAllOutput>([]);
 
@@ -70,7 +81,7 @@ const RegisterForm = () => {
       <FormContainer onSubmit={handleSubmit((data: any) => onSubmit(data))}>
         <InputContainer>
           <label>
-            Name{" "}
+            {t("general.name")}{" "}
             <ErrorMsj>
               {errors.name && <span>{errors.name.message as string}</span>}
             </ErrorMsj>
@@ -90,49 +101,55 @@ const RegisterForm = () => {
           <LoginInput {...register("surname")} type="text" />
         </InputContainer>
 
-        <InputContainer>
-          <label>
-            Rol{" "}
-            <ErrorMsj>
-              {errors.rol && <span>{errors.rol.message as string}</span>}
-            </ErrorMsj>
-          </label>
+        {!rol && (
+          <InputContainer>
+            <label>
+              Rol{" "}
+              <ErrorMsj>
+                {errors.rol && <span>{errors.rol.message as string}</span>}
+              </ErrorMsj>
+            </label>
 
-          <Controller
-            name="rol"
-            control={control}
-            render={({ field }) => (
-              <SelectInput
-                {...field}
-                options={rolesSelectOptions}
-                className="roles"
-                classNamePrefix="select"
-              />
-            )}
-          />
-        </InputContainer>
+            <Controller
+              name="rol"
+              control={control}
+              render={({ field }) => (
+                <SelectInput
+                  {...field}
+                  options={rolesSelectOptions}
+                  className="roles"
+                  classNamePrefix="select"
+                />
+              )}
+            />
+          </InputContainer>
+        )}
 
-        <InputContainer>
-          <label>
-            Guilds{" "}
-            <ErrorMsj>
-              {errors.guilds && <span>{errors.guilds.message as string}</span>}
-            </ErrorMsj>
-          </label>
-          <Controller
-            name="guilds"
-            control={control}
-            render={({ field }) => (
-              <SelectMulti
-                {...field}
-                options={guildsSelectOptions}
-                className="guilds"
-                classNamePrefix="select"
-                isMulti
-              />
-            )}
-          />
-        </InputContainer>
+        {rol === RolesEnum.worker && (
+          <InputContainer>
+            <label>
+              Guilds{" "}
+              <ErrorMsj>
+                {errors.guilds && (
+                  <span>{errors.guilds.message as string}</span>
+                )}
+              </ErrorMsj>
+            </label>
+            <Controller
+              name="guilds"
+              control={control}
+              render={({ field }) => (
+                <SelectMulti
+                  {...field}
+                  options={guildsSelectOptions}
+                  className="guilds"
+                  classNamePrefix="select"
+                  isMulti
+                />
+              )}
+            />
+          </InputContainer>
+        )}
 
         <InputContainer>
           <label>

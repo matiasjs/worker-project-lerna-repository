@@ -33,4 +33,7 @@ export * from "./frontend/domains/Shared/domain/WebStorageRepository";
 export * from "./frontend/domains/Shared/infrastructure/AxiosConfig";
 export * from "./frontend/domains/Shared/infrastructure/AxiosRepository";
 export * from "./frontend/domains/Shared/infrastructure/LocalStorageRepository";
+export * from "./frontend/translates/en/translation";
+export * from "./frontend/translates/es/translation";
+export { default as resources } from "./frontend/translates";
 export * from "./infrastructure/utils/Util";
