@@ -1,4 +1,3 @@
-import { useState } from "react";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { RolesEnum } from "shared-workers";
 import Home from "./components/GlobalComponents/Home";
@@ -7,16 +6,14 @@ import RegisterPage from "./pages/Register";
 
 // TODO: move this to another file
 function ProtectedRoute({ children, user }: any) {
-  // if (!user) {
-  //   return <Navigate to="/login" />;
-  // }
+  if (!user) {
+    return <Navigate to="/login" />;
+  }
 
   return children;
 }
 
 function AppRoutes() {
-  const [loggedUser, setLoggedUser] = useState(null);
-
   return (
     <BrowserRouter>
       <Routes>
