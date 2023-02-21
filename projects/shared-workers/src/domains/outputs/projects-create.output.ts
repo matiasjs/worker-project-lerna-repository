@@ -1,4 +1,4 @@
-export interface ProjectsCreateWorkersOutput {
+export interface ProjectsCreateUsersOutput {
   _id: string;
   name: string;
   email: string;
@@ -9,6 +9,14 @@ export interface ProjectsCreateWorkersOutput {
   specializationsId: string[];
   rol: any;
   specializations: any[];
+}
+
+export interface ProjectsCreateWorkersOutput {
+  workerId: string;
+  worker?: ProjectsCreateUsersOutput;
+  budget?: number;
+  stars?: number;
+  opinion?: string;
 }
 
 export interface ProjectsCreateOutput {
@@ -26,6 +34,5 @@ export interface ProjectsCreateOutput {
     department: string;
   };
   description: string;
-  workersIds: string[];
   workers: ProjectsCreateWorkersOutput[];
 }

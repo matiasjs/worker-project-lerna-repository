@@ -2,11 +2,15 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { RolesEnum } from "shared-workers";
 import Home from "./components/GlobalComponents/Home";
 import LoginForm from "./components/GlobalComponents/LoginForm";
+import ProjectsCreate from "./pages/Projects-Create";
 import RegisterPage from "./pages/Register";
 
 // TODO: move this to another file
 function ProtectedRoute({ children, user }: any) {
-  if (!user) {
+  // TODO: replace this with the storagedb
+  const accessToken = localStorage.getItem("access_token");
+
+  if (!accessToken) {
     return <Navigate to="/login" />;
   }
 
@@ -32,11 +36,18 @@ function AppRoutes() {
           element={<RegisterPage rol={RolesEnum.business} />}
         />
         <Route
-          index
           path="/projects"
           element={
             <ProtectedRoute>
               <Home />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/projects/create"
+          element={
+            <ProtectedRoute>
+              <ProjectsCreate />
             </ProtectedRoute>
           }
         />

@@ -9,7 +9,6 @@ interface Params {
   address: Address;
   description: string;
   ownerId: string;
-  workersIds?: string[];
   workers?: any[];
 }
 
@@ -28,7 +27,6 @@ export class ProjectsCreate {
       ...primitive,
       _id: primitive._id,
       workers: primitive.workers,
-      workersIds: primitive.workersIds,
     };
   }
 }
