@@ -1,14 +1,27 @@
 import { ObjectId } from 'mongodb';
 import { AggregateRoot, Address } from 'shared-workers';
 
+interface ProjectWorkersPrimitives {
+  workerId: string;
+  budget?: number;
+  stars?: number;
+  opinion?: string;
+}
+
 interface ProjectPrimitives {
   _id?: any;
   name: string;
   address: Address;
   description: string;
   ownerId: string;
-  workersIds?: string[];
-  workers?: any[];
+  workers?: ProjectWorkersPrimitives[];
+}
+
+interface ProjectWorkersPrimitivesMongoDb {
+  workerId: ObjectId;
+  budget?: number;
+  stars?: number;
+  opinion?: string;
 }
 
 interface ProjectPrimitivesMongoDb {
@@ -17,8 +30,7 @@ interface ProjectPrimitivesMongoDb {
   address: Address;
   description: string;
   ownerId: ObjectId;
-  workersIds?: ObjectId[];
-  workers?: any[];
+  workers?: ProjectWorkersPrimitivesMongoDb[];
 }
 
 export class Project extends AggregateRoot {
@@ -28,7 +40,6 @@ export class Project extends AggregateRoot {
     readonly address: any,
     readonly description: string,
     readonly ownerId: string,
-    readonly workersIds: string[] = [],
     readonly workers?: any[],
   ) {
     super();
@@ -41,7 +52,6 @@ export class Project extends AggregateRoot {
       plainData.address,
       plainData.description,
       plainData.ownerId,
-      plainData.workersIds,
       plainData.workers,
     );
   }
@@ -53,7 +63,6 @@ export class Project extends AggregateRoot {
       address: this.address,
       description: this.description,
       ownerId: this.ownerId,
-      workersIds: this.workersIds,
     };
 
     if (this.workers) {
@@ -70,7 +79,10 @@ export class Project extends AggregateRoot {
       address: this.address,
       description: this.description,
       ownerId: new ObjectId(this.ownerId),
-      workersIds: this.workersIds.map((id) => new ObjectId(id)),
+      workers: this.workers.map((projectWorker) => ({
+        ...projectWorker,
+        workerId: new ObjectId(projectWorker.workerId),
+      })),
     };
   }
 }

@@ -12,9 +12,12 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./models/schema.yup";
 import IFormInputs from "./models/form-inputs.interface";
 import usersService from "../../../services/users.service";
+import { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const LoginForm = () => {
-  const { login } = usersService();
+  const navigate = useNavigate();
+  const { login, getLoggedUser } = usersService();
 
   const {
     register,
@@ -29,6 +32,14 @@ const LoginForm = () => {
     await login(data.email, data.password);
   };
 
+  useEffect(() => {
+    const loggedUser = getLoggedUser();
+
+    if (loggedUser) {
+      navigate("/projects");
+    }
+  }, []);
+
   return (
     <LoginContainer>
       <FormContainer onSubmit={handleSubmit(onSubmit)}>
@@ -39,7 +50,11 @@ const LoginForm = () => {
               {errors.email && <span>This field is required</span>}
             </ErrorMsj>
           </label>
-          <LoginInput {...register("email")} type="email" />
+          <LoginInput
+            {...register("email")}
+            type="email"
+            value={"ringa.matias@gmail.com"}
+          />
         </InputContainer>
         <InputContainer>
           <label>
@@ -51,6 +66,7 @@ const LoginForm = () => {
           <LoginInput
             {...register("password", { required: true })}
             type="password"
+            value={"password"}
           />
         </InputContainer>
         <ButtonForm type="submit" />

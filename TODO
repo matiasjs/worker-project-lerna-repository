@@ -5,22 +5,26 @@ Back:
     ✔ crear capa de cache para servicios como el de roles, tipos de trabajadores @done(23-01-28 22:57)
     ✔ acceso al rol en los endpoints @Rol() @started(23-01-29 22:58) @done(23-01-30 00:16) @lasted(1h18m45s)
     ✔ acceso al usuario logead en los endpoints @loggedUser() @started(23-01-29 23:03) @done(23-01-30 00:16) @lasted(1h13m46s)
-    ☐ cambiar specialization en los users a un array @started(23-02-12 03:01)
-    ☐ modificar las estructura de datos para que funcione el mvp @started(23-02-09 20:25)
+    ✔ cambiar specialization en los users a un array @started(23-02-12 03:01) @done(23-02-18 17:44) @lasted(6d14h43m30s)
+    ✔ modificar las estructura de datos para que funcione el mvp @started(23-02-09 20:25) @done(23-02-18 17:44) @lasted(1w1d21h19m43s)
+    ☐ update project: add presupuesto, add worker 
+    ☐ register user puede retornar access_token
     ☐ cambiar specialization por guild ( gremio )
     ☐ investigar el login de google
 
 Front:
-    ☐ Crear pantalla de login
+    ✔ Crear pantalla de login @done(23-02-18 17:44)
     ✔ Crear un webStorage domain, y el localstorage.repository.ts @started(23-02-04 21:50) @done(23-02-06 19:22) @lasted(1d21h32m57s)
-        ☐ Guardar accessToken en el localStorage
-    ☐ Crear pantalla de registro
-        ☐ formulario
-        ☐ validaciones
-        ☐ coneccion backend
-    ☐ hacer funcionar docker
+        ✔ Guardar accessToken en el localStorage @done(23-02-18 17:44)
+    ✔ Crear pantalla de registro @done(23-02-18 17:44)
+        ✔ formulario @done(23-02-18 17:45)
+        ✔ validaciones @done(23-02-18 17:45)
+        ✔ coneccion backend @done(23-02-18 17:45)
+    ✔ hacer funcionar docker @done(23-02-18 17:45)
+    ✔ instalar i18n @done(23-02-18 17:46)
     ☐ cambiar authUser por User
+    ☐ 
 
-Native:
+✘ Native: @cancelled(23-02-18 17:45)
     ✘ Instalar @cancelled(23-02-13 01:41)
     ✘ Crear pantalla de login @cancelled(23-02-13 01:41)

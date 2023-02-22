@@ -1,8 +1,6 @@
 import { Injectable } from '@nestjs/common/decorators';
 import { ProjectsRepository } from '../domain/ProjectRepository';
-import { Project } from '../domain/Project';
 import { ProjectsCreateResponse } from '@domains/Shared/application/responses/ProjectsCreateResponse';
-import { Address } from 'shared-workers';
 
 interface Params {
   _id: string;
@@ -18,7 +16,6 @@ export class ProjectsGetByUserId {
     return projects.map((project) => ({
       ...project,
       workers: project.workers,
-      workersIds: project.workersIds,
     }));
   }
 }

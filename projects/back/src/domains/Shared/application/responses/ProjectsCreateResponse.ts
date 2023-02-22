@@ -1,4 +1,12 @@
 export interface ProjectsCreateWorkerResponse {
+  workerId: string;
+  worker?: ProjectsCreateUserResponse;
+  budget?: number;
+  stars?: number;
+  opinion?: string;
+}
+
+export interface ProjectsCreateUserResponse {
   _id: string;
   name: string;
   email: string;
@@ -27,6 +35,5 @@ export interface ProjectsCreateResponse {
     tower: string;
     department: string;
   };
-  workersIds: string[];
   workers: ProjectsCreateWorkerResponse[];
 }

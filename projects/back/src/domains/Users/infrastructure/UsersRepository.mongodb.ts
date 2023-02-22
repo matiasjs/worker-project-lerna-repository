@@ -54,11 +54,6 @@ export class UsersRepositoryMongodb
         },
         {
           $unwind: {
-            path: '$specializations',
-          },
-        },
-        {
-          $unwind: {
             path: '$rol',
           },
         },

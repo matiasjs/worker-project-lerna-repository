@@ -30,16 +30,41 @@ export class ProjectsRepositoryMongodb
           },
         },
         {
+          $unwind: {
+            path: '$workers',
+          },
+        },
+        {
           $lookup: {
             from: 'users',
-            localField: 'workersIds',
+            localField: 'workers.workerId',
             foreignField: '_id',
-            as: 'workers',
+            as: 'workers.worker',
           },
         },
         {
           $unwind: {
-            path: '$workers',
+            path: '$workers.worker',
+          },
+        },
+        {
+          $group: {
+            _id: '$_id',
+            name: {
+              $first: '$name',
+            },
+            address: {
+              $first: '$address',
+            },
+            description: {
+              $first: 'description',
+            },
+            ownerId: {
+              $first: 'ownerId',
+            },
+            workers: {
+              $push: '$workers',
+            },
           },
         },
       ])

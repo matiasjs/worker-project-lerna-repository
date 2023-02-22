@@ -38,10 +38,8 @@ export class ProjectsCreateResponseDto implements ProjectsCreateOutput {
   };
 
   @ApiProperty()
-  @IsString({ each: true })
+  @IsObject({ each: true })
   @IsOptional()
-  workersIds: string[];
-
   workers: ProjectsCreateWorkersOutput[];
 
   @ApiProperty()
@@ -71,9 +69,9 @@ export class ProjectsCreateRequestDto implements ProjectsCreateInput {
   address: Address;
 
   @ApiProperty({ default: [] })
-  @IsString({ each: true })
+  @IsObject({ each: true })
   @IsNotEmpty()
-  workersIds?: string[];
+  workers?: any[];
 
   @ApiProperty()
   @IsString()
