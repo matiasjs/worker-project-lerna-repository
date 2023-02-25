@@ -1,5 +1,5 @@
 import Proyect from "./Proyect";
-import useState from "react";
+import { useState } from "react";
 import {
   AddNew,
   HomeContainer,
@@ -27,10 +27,10 @@ const Home = () => {
       </HomeHeader>
 
       <ProyectsContainer>
-        {p &&
+        {/* {p &&
           proyectos.map((proyecto) => {
             <Proyect key={proyecto.id} content={proyecto.content} />;
-          })}
+          })} */}
       </ProyectsContainer>
     </HomeContainer>
   );

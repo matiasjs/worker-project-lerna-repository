@@ -3,9 +3,13 @@ import react from "@vitejs/plugin-react";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  plugins: [react()],
-  optimizeDeps: { include: ["shared-workers"] },
-  build: {
-    commonjsOptions: { include: [] },
+  optimizeDeps: {
+    include: ["shared-workers"],
   },
+  build: {
+    commonjsOptions: {
+      include: [/shared-workers/, /node_modules/],
+    },
+  },
+  plugins: [react()],
 });

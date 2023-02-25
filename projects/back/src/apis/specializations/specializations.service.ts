@@ -9,7 +9,7 @@ import { SpecializationsGetAll } from '@domains/Specializations/application/Spec
 @Injectable()
 export class SpecializationsService {
   // TODO: move to var envs
-  private redisKeyRoles = 'redisKeyRoles';
+  private redisKeyRoles = 'redisKeySpecializations';
 
   constructor(
     @InjectPinoLogger(SpecializationsService.name)

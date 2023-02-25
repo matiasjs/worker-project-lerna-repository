@@ -1,6 +1,7 @@
 import {
   IsEmail,
   IsNotEmpty,
+  IsNumber,
   IsOptional,
   IsString,
   IsStrongPassword,
@@ -38,14 +39,19 @@ export class UserGetByEmailResponseDto implements UserGetByEmailOutput {
   surname: string;
 
   @ApiProperty()
-  @IsString()
+  @IsNumber()
   @IsNotEmpty()
-  rolid: string;
+  rank: number;
 
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
-  specializationid: string;
+  rolId: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
+  specializationsId: string[];
 
   @ApiProperty()
   @IsOptional()
@@ -53,5 +59,5 @@ export class UserGetByEmailResponseDto implements UserGetByEmailOutput {
 
   @ApiProperty()
   @IsOptional()
-  specialization?: any;
+  specializations?: any[];
 }

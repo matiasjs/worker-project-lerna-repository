@@ -1,6 +1,5 @@
 import { Injectable } from '@nestjs/common/decorators';
 
-import { Nullable } from 'shared-workers';
 import { MongodbRepository } from '../../Shared/infrastructure/MongodbRepository';
 import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
@@ -21,14 +20,67 @@ export class ProjectsRepositoryMongodb
     super(logger, config);
   }
 
+  async getByUserId(_id: string): Promise<Project[]> {
+    // TODO: cambiar el aggregate
+    const projects = (await this.collection
+      .aggregate([
+        {
+          $match: {
+            ownerId: new ObjectId(_id),
+          },
+        },
+        {
+          $unwind: {
+            path: '$workers',
+          },
+        },
+        {
+          $lookup: {
+            from: 'users',
+            localField: 'workers.workerId',
+            foreignField: '_id',
+            as: 'workers.worker',
+          },
+        },
+        {
+          $unwind: {
+            path: '$workers.worker',
+          },
+        },
+        {
+          $group: {
+            _id: '$_id',
+            name: {
+              $first: '$name',
+            },
+            address: {
+              $first: '$address',
+            },
+            description: {
+              $first: 'description',
+            },
+            ownerId: {
+              $first: 'ownerId',
+            },
+            workers: {
+              $push: '$workers',
+            },
+          },
+        },
+      ])
+      .toArray()) as any;
+
+    return projects.map(Project.fromPrimitives);
+  }
+
   async create(project: Project): Promise<Project> {
     const { insertedId } = await this.collection.insertOne(
-      project.toPrimitives(),
+      project.toPrimitivesMongodb(),
     );
 
     return Project.fromPrimitives({
-      _id: insertedId,
       ...project,
+      _id: insertedId.toString(),
     });
   }
 }

@@ -10,8 +10,6 @@ export class AuthUserLogin {
       password,
     });
 
-    console.log(email, password);
-
     if (!authUserToken) {
       // TODO: dominizarlo(?)
       throw Error(`Error generico ${authUserToken}`);

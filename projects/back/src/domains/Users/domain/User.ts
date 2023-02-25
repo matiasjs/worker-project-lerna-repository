@@ -7,26 +7,28 @@ interface UserPrimitives {
   password: string;
   name: string;
   surname: string;
-  rolid: string;
+  rank: number;
+  rolId: string;
   rol?: {
     _id: string;
     description: string;
   };
-  specializationid: string;
-  specialization?: {
+  specializationsId: string[];
+  specializations?: {
     _id: string;
     description: string;
-  };
+  }[];
 }
 
-interface UserMongodbFormat {
+interface UserPrimitivesMongoDb {
   _id?: any;
   email: string;
   password: string;
   name: string;
   surname: string;
-  rolid: ObjectId;
-  specializationid: ObjectId;
+  rank: number;
+  rolId: ObjectId;
+  specializationsId: ObjectId[];
 }
 
 export class User extends AggregateRoot {
@@ -36,10 +38,11 @@ export class User extends AggregateRoot {
     readonly password: string,
     readonly name: string,
     readonly surname: string,
-    readonly rolid: string,
-    readonly specializationid: string,
+    readonly rank: number,
+    readonly rolId: string,
+    readonly specializationsId: string[],
     readonly rol?: { _id: string; description: string },
-    readonly specialization?: { _id: string; description: string },
+    readonly specializations?: { _id: string; description: string }[],
   ) {
     super();
   }
@@ -51,10 +54,12 @@ export class User extends AggregateRoot {
       plainData.password,
       plainData.name,
       plainData.surname,
-      plainData.rolid?.toString() || plainData.rolid,
-      plainData.specializationid?.toString() || plainData.specializationid,
+      plainData.rank,
+      plainData.rolId?.toString() || plainData.rolId,
+      plainData.specializationsId?.map((spe) => spe.toString()) ||
+        plainData.specializationsId,
       plainData.rol,
-      plainData.specialization,
+      plainData.specializations,
     );
   }
 
@@ -65,22 +70,26 @@ export class User extends AggregateRoot {
       password: this.password,
       name: this.name,
       surname: this.surname,
-      rolid: this.rolid,
-      specializationid: this.specializationid,
+      rank: this.rank,
+      rolId: this.rolId,
+      specializationsId: this.specializationsId,
       rol: this.rol,
-      specialization: this.specialization,
+      specializations: this.specializations,
     };
   }
 
-  toMongodb(): UserMongodbFormat {
+  toPrimitivesMongodb(): UserPrimitivesMongoDb {
     return {
       _id: this._id,
       email: this.email,
       password: this.password,
       name: this.name,
       surname: this.surname,
-      rolid: new ObjectId(this.rolid),
-      specializationid: new ObjectId(this.specializationid),
+      rank: this.rank,
+      rolId: new ObjectId(this.rolId),
+      specializationsId: this.specializationsId.map(
+        (specializationId) => new ObjectId(specializationId),
+      ),
     };
   }
 }

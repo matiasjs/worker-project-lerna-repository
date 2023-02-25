@@ -4,12 +4,13 @@ export interface InsertUserResponse {
   password: string;
   name: string;
   surname: string;
-  rolid: string;
-  specializationid: string;
-  specialization?: {
+  rank: number;
+  rolId: string;
+  specializationsId: string[];
+  specializations?: {
     _id: any;
     description: string;
-  };
+  }[];
   rol?: {
     _id?: any;
     description: string;

@@ -3,14 +3,15 @@ export interface AuthUserResponse {
   email: string;
   name: string;
   surname: string;
-  rolid: string;
+  rank: number;
+  rolId: string;
   rol?: {
     _id: string;
     description: string;
   };
-  specializationid: string;
-  specialization?: {
+  specializationsId: string[];
+  specializations?: {
     _id: string;
     description: string;
-  };
+  }[];
 }

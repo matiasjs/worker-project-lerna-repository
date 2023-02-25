@@ -5,7 +5,8 @@ import {
   AxiosRepository,
   LocalStorageRepository,
   WebStorageRepository,
-  WorkersAxiosRepository,
+  RolAxiosRepository,
+  GuildAxiosRepository,
 } from "shared-workers";
 
 //TODO: move to process.env.
@@ -14,16 +15,19 @@ const timeout = 5000;
 const headers = { "Content-Type": "application/json" };
 
 const DIContext = createContext({
-  workersRepository: {} as WorkersAxiosRepository,
   authUsersRepository: {} as AuthUsersAxiosRepository,
   webStorageRepository: {} as WebStorageRepository,
+  rolAxiosRepository: {} as RolAxiosRepository,
+  guildAxiosRepository: {} as GuildAxiosRepository,
 });
 
 const DIProvider = ({ children }: any) => {
   const axiosConfig = new AxiosConfig(baseURL, timeout, headers);
   const axiosRepository = new AxiosRepository(axiosConfig);
+
   const authUsersRepository = new AuthUsersAxiosRepository(axiosRepository);
-  const workersRepository = new WorkersAxiosRepository(axiosRepository);
+  const rolAxiosRepository = new RolAxiosRepository(axiosRepository);
+  const guildAxiosRepository = new GuildAxiosRepository(axiosRepository);
 
   const webStorageRepository = new LocalStorageRepository();
 
@@ -31,8 +35,9 @@ const DIProvider = ({ children }: any) => {
     <DIContext.Provider
       value={{
         authUsersRepository,
-        workersRepository,
         webStorageRepository,
+        rolAxiosRepository,
+        guildAxiosRepository,
       }}
     >
       {children}

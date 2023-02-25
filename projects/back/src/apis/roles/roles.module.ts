@@ -4,10 +4,10 @@ import { RolesService } from './roles.service';
 import { RolesController } from './roles.controller';
 import { rolesConfig } from './config/roles.config';
 import { MongodbConfig } from '@domains/Shared/infrastructure/MongodbConfig';
-import { RolesGetAll } from '@domains/roles/application/RolesGetAll';
-import { RolesRepositoryMongodb } from '@domains/roles/infrastructure/RolesRepository.mongodb';
-import { RolesRepository } from '@domains/roles/domain/RolRepository';
-import { RolesCreate } from '@domains/roles/application/RolesCreate';
+import { RolesGetAll } from '@domains/Roles/application/RolesGetAll';
+import { RolesRepositoryMongodb } from '@domains/Roles/infrastructure/RolesRepository.mongodb';
+import { RolesRepository } from '@domains/Roles/domain/RolRepository';
+import { RolesCreate } from '@domains/Roles/application/RolesCreate';
 import { RedisConfig } from '@domains/Shared/infrastructure/RedisConfig';
 import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository';
 

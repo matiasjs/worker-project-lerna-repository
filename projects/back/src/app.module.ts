@@ -18,14 +18,25 @@ import { UsersModule } from './apis/users/users.module';
 import { usersConfig } from './apis/users/config/users.config';
 import { RolesModule } from './apis/roles/roles.module';
 import { rolesConfig } from './apis/roles/config/roles.config';
-import { JwtModule, JwtService } from '@nestjs/jwt';
+import { JwtService } from '@nestjs/jwt';
 import { jwtConfig } from '@shared/configs/jwt.config';
+import { ProjectsModule } from './apis/projects/projects.module';
+import { projectsConfig } from './apis/projects/config/projects.config';
+import { SpecializationsModule } from './apis/specializations/specializations.module';
+import { specializationsConfig } from './apis/specializations/config/specializations.config';
 
 @Module({
   imports: [
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [authConfig, usersConfig, rolesConfig, jwtConfig],
+      load: [
+        authConfig,
+        usersConfig,
+        rolesConfig,
+        jwtConfig,
+        projectsConfig,
+        specializationsConfig,
+      ],
       envFilePath: '.env',
     }),
     LoggerModule.forRoot(),
@@ -35,6 +46,8 @@ import { jwtConfig } from '@shared/configs/jwt.config';
     WorkersModule,
     UsersModule,
     RolesModule,
+    ProjectsModule,
+    SpecializationsModule,
   ],
   controllers: [AppController],
   providers: [
