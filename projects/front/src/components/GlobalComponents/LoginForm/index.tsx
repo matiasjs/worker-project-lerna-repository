@@ -1,12 +1,5 @@
-import {
-  ButtonForm,
-  ErrorMsj,
-  FormContainer,
-  InputContainer,
-  LoginContainer,
-  LoginInput,
-} from "./styles";
-import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
+import { ButtonForm, InputFieldContainer, FormContainer } from "./styles";
+import { FieldValues, useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import schema from "./models/schema.yup";
@@ -14,6 +7,10 @@ import IFormInputs from "./models/form-inputs.interface";
 import usersService from "../../../services/users.service";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { t } from "i18next";
+import { FaKey } from "react-icons/fa";
+import { MdEmail } from "react-icons/md";
+import InputField from "../../UI/Form/InputField";
 
 const LoginForm = () => {
   const navigate = useNavigate();
@@ -35,43 +32,39 @@ const LoginForm = () => {
   useEffect(() => {
     const loggedUser = getLoggedUser();
 
+    console.log("loggedUser", loggedUser);
+
     if (loggedUser) {
       navigate("/projects");
     }
   }, []);
 
   return (
-    <LoginContainer>
-      <FormContainer onSubmit={handleSubmit(onSubmit)}>
-        <InputContainer>
-          <label>
-            Email{" "}
-            <ErrorMsj>
-              {errors.email && <span>This field is required</span>}
-            </ErrorMsj>
-          </label>
-          <LoginInput
-            {...register("email")}
-            type="email"
-            value={"ringa.matias@gmail.com"}
-          />
-        </InputContainer>
-        <InputContainer>
-          <label>
-            Constraseña
-            <ErrorMsj>
-              {errors.password && <span>This field is required</span>}
-            </ErrorMsj>
-          </label>
-          <LoginInput
-            {...register("password", { required: true })}
-            type="password"
-            value={"password"}
-          />
-        </InputContainer>
-        <ButtonForm type="submit" />
-      </FormContainer>
-    </LoginContainer>
+    <FormContainer onSubmit={handleSubmit(onSubmit)}>
+      <InputFieldContainer>
+        <InputField
+          placeholder={t("general.email")}
+          type={"text"}
+          icon={<MdEmail />}
+          height={50}
+          useFormProps={register("email")}
+        />
+        {errors.email && <span>{errors.email.message as string}</span>}
+      </InputFieldContainer>
+
+      <InputFieldContainer>
+        <InputField
+          placeholder={t("general.password")}
+          type={"password"}
+          icon={<FaKey />}
+          height={50}
+          useFormProps={register("password")}
+        />
+        {errors.password && <span>{errors.password.message as string}</span>}
+      </InputFieldContainer>
+
+      <ButtonForm type="submit" value={t("general.submit") || "submit"} />
+    </FormContainer>
   );
 };
 

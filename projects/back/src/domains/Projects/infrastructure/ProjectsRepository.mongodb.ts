@@ -57,10 +57,10 @@ export class ProjectsRepositoryMongodb
               $first: '$address',
             },
             description: {
-              $first: 'description',
+              $first: '$description',
             },
             ownerId: {
-              $first: 'ownerId',
+              $first: '$ownerId',
             },
             workers: {
               $push: '$workers',

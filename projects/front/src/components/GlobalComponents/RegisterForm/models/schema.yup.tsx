@@ -20,14 +20,11 @@ const schema = object({
     .required("No password provided.")
     .min(8, "Password is too short - should be 8 chars minimum.")
     .matches(/[a-zA-Z]/, "Password can only contain Latin letters."),
-  // passwordConfirmation: string().test(
-  //   "passwords-match",
-  //   "Passwords must match",
-  //   (value, context) => {
-  //     console.log(value, context);
-  //     return context.parent.password === value;
-  //   }
-  // ),
+  passwordConfirmation: string().test(
+    "passwords-match",
+    "Passwords must match",
+    (value, context) => context.parent.password === value
+  ),
 }).required();
 
 export default schema;

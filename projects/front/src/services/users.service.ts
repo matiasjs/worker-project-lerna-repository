@@ -1,12 +1,10 @@
-import {
-  AuthUserLogin,
-  AuthUserLogout,
-  AuthUserRegister,
-} from "shared-workers";
 import { DIContext } from "../contexts/dependency-injection.context";
 import { useContext } from "react";
 import { Params } from "./models/register.params";
 import { useNavigate } from "react-router-dom";
+import { AuthUserLogin } from "../domains/AuthUsers/applications(rojo)/AuthUsersLogin";
+import { AuthUserLogout } from "../domains/AuthUsers/applications(rojo)/AuthUsersLogout";
+import { AuthUserRegister } from "../domains/AuthUsers/applications(rojo)/AuthUsersRegister";
 
 const usersService = () => {
   const navigate = useNavigate();

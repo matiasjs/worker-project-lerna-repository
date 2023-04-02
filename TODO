@@ -10,6 +10,7 @@ Back:
     ☐ update project: add presupuesto, add worker 
     ☐ register user puede retornar access_token
     ☐ cambiar specialization por guild ( gremio )
+    ☐ crear el dominio empresa ( equivalente a user, pero para empresas con razon social... )
     ☐ investigar el login de google
 
 Front:
@@ -23,7 +24,7 @@ Front:
     ✔ hacer funcionar docker @done(23-02-18 17:45)
     ✔ instalar i18n @done(23-02-18 17:46)
     ☐ cambiar authUser por User
-    ☐ 
+    ☐ Pantalla de new project
 
 ✘ Native: @cancelled(23-02-18 17:45)
     ✘ Instalar @cancelled(23-02-13 01:41)

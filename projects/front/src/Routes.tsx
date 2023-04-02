@@ -1,7 +1,9 @@
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { RolesEnum } from "shared-workers";
-import Home from "./components/GlobalComponents/Home";
-import LoginForm from "./components/GlobalComponents/LoginForm";
+
+// Pages
+import LoginPage from "./pages/Login";
+import ProjectsPage from "./pages/Projects";
 import ProjectsCreate from "./pages/Projects-Create";
 import RegisterPage from "./pages/Register";
 
@@ -21,8 +23,9 @@ function AppRoutes() {
   return (
     <BrowserRouter>
       <Routes>
+        <Route path="*" element={<Navigate to="/projects" />} />
         <Route path="/" element={<Navigate to="/projects" />} />
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginPage />} />
         <Route
           path="/register/worker"
           element={<RegisterPage rol={RolesEnum.worker} />}
@@ -39,7 +42,7 @@ function AppRoutes() {
           path="/projects"
           element={
             <ProtectedRoute>
-              <Home />
+              <ProjectsPage />
             </ProtectedRoute>
           }
         />

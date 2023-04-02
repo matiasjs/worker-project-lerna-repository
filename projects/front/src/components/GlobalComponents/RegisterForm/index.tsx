@@ -1,10 +1,7 @@
 import {
   ButtonForm,
-  ErrorMsj,
   FormContainer,
-  InputContainer,
-  LoginContainer,
-  LoginInput,
+  InputFieldContainer,
   SelectInput,
   SelectMulti,
 } from "./styles";
@@ -22,6 +19,11 @@ import {
 } from "shared-workers";
 import guildsService from "../../../services/guilds.service";
 import IFormInputs from "./models/register-form-inputs.interface";
+import InputField from "../../UI/Form/InputField";
+
+import { IoPerson } from "react-icons/io5";
+import { MdEmail } from "react-icons/md";
+import { FaKey } from "react-icons/fa";
 
 interface Props {
   rol: RolesEnum;
@@ -50,6 +52,7 @@ const RegisterForm = ({ rol }: Props) => {
         }))
       );
     });
+
     getAllGuilds().then((guilds) => {
       setGuilds(guilds);
 
@@ -63,13 +66,27 @@ const RegisterForm = ({ rol }: Props) => {
     });
   }, []);
 
+  const resolver = yupResolver(schema);
+
   const {
-    register,
     handleSubmit,
+    register,
     control,
     formState: { errors },
   } = useForm({
-    resolver: yupResolver(schema),
+    resolver,
+    defaultValues: {
+      name: "",
+      surname: "",
+      guilds: [],
+      rol: {
+        label: rol,
+        value: rol,
+      },
+      email: "",
+      password: "",
+      passwordConfirmation: "",
+    },
   });
 
   const onSubmit = async (data: IFormInputs) => {
@@ -77,123 +94,109 @@ const RegisterForm = ({ rol }: Props) => {
   };
 
   return (
-    <LoginContainer>
-      <FormContainer onSubmit={handleSubmit((data: any) => onSubmit(data))}>
-        <InputContainer>
-          <label>
-            {t("general.name")}{" "}
-            <ErrorMsj>
-              {errors.name && <span>{errors.name.message as string}</span>}
-            </ErrorMsj>
-          </label>
-          <LoginInput {...register("name")} type="text" />
-        </InputContainer>
+    <FormContainer onSubmit={handleSubmit((data: any) => onSubmit(data))}>
+      <InputFieldContainer>
+        <InputField
+          placeholder={t("general.name")}
+          type={"text"}
+          icon={<IoPerson />}
+          height={50}
+          useFormProps={register("name")}
+        />
+        {errors.name && <span>{errors.name.message as string}</span>}
+      </InputFieldContainer>
 
-        <InputContainer>
-          <label>
-            Surname{" "}
-            <ErrorMsj>
-              {errors.surname && (
-                <span>{errors.surname.message as string}</span>
-              )}
-            </ErrorMsj>
-          </label>
-          <LoginInput {...register("surname")} type="text" />
-        </InputContainer>
+      <InputFieldContainer>
+        <InputField
+          placeholder={t("general.surname")}
+          type={"text"}
+          icon={<IoPerson />}
+          height={50}
+          useFormProps={register("surname")}
+        />
+        {errors.surname && <span>{errors.surname.message as string}</span>}
+      </InputFieldContainer>
 
-        {!rol && (
-          <InputContainer>
-            <label>
-              Rol{" "}
-              <ErrorMsj>
-                {errors.rol && <span>{errors.rol.message as string}</span>}
-              </ErrorMsj>
-            </label>
+      {!rol && (
+        <InputFieldContainer>
+          <Controller
+            name="rol"
+            defaultValue={rol}
+            control={control}
+            render={({ field }) => (
+              <SelectInput
+                {...field}
+                options={rolesSelectOptions}
+                className="roles"
+                classNamePrefix="select"
+              />
+            )}
+          />
+        </InputFieldContainer>
+      )}
 
-            <Controller
-              name="rol"
-              control={control}
-              render={({ field }) => (
-                <SelectInput
-                  {...field}
-                  options={rolesSelectOptions}
-                  className="roles"
-                  classNamePrefix="select"
-                />
-              )}
-            />
-          </InputContainer>
-        )}
-
-        {rol === RolesEnum.worker && (
-          <InputContainer>
-            <label>
-              Guilds{" "}
-              <ErrorMsj>
-                {errors.guilds && (
-                  <span>{errors.guilds.message as string}</span>
-                )}
-              </ErrorMsj>
-            </label>
-            <Controller
-              name="guilds"
-              control={control}
-              render={({ field }) => (
+      {rol === RolesEnum.worker && (
+        <InputFieldContainer>
+          <Controller
+            name="guilds"
+            control={control}
+            render={({ field }) => (
+              <InputField
+                placeholder={t("general.guilds")}
+                type={"text"}
+                icon={<MdEmail />}
+                height={50}
+              >
                 <SelectMulti
                   {...field}
                   options={guildsSelectOptions}
-                  className="guilds"
-                  classNamePrefix="select"
+                  placeholder={t("general.guilds")}
+                  classNamePrefix="select_multi"
                   isMulti
                 />
-              )}
-            />
-          </InputContainer>
+              </InputField>
+            )}
+          />
+        </InputFieldContainer>
+      )}
+
+      <InputFieldContainer>
+        <InputField
+          placeholder={t("general.email")}
+          type={"text"}
+          icon={<MdEmail />}
+          height={50}
+          useFormProps={register("email")}
+        />
+        {errors.email && <span>{errors.email.message as string}</span>}
+      </InputFieldContainer>
+
+      <InputFieldContainer>
+        <InputField
+          placeholder={t("general.password")}
+          type={"password"}
+          icon={<FaKey />}
+          height={50}
+          useFormProps={register("password")}
+        />
+        {errors.password && <span>{errors.password.message as string}</span>}
+      </InputFieldContainer>
+
+      <InputFieldContainer>
+        <InputField
+          placeholder={t("general.password")}
+          type={"password"}
+          icon={<FaKey />}
+          height={50}
+          useFormProps={register("passwordConfirmation")}
+        />
+        {errors.passwordConfirmation && (
+          <span>{errors.passwordConfirmation.message as string}</span>
         )}
+      </InputFieldContainer>
 
-        <InputContainer>
-          <label>
-            Email{" "}
-            <ErrorMsj>
-              {errors.email && <span>{errors.email.message as string}</span>}
-            </ErrorMsj>
-          </label>
-          <LoginInput {...register("email")} type="email" />
-        </InputContainer>
-
-        <InputContainer>
-          <label>
-            Constraseña
-            <ErrorMsj>
-              {errors.password && (
-                <span>{errors.password.message as string}</span>
-              )}
-            </ErrorMsj>
-          </label>
-          <LoginInput
-            {...register("password", { required: true })}
-            type="password"
-          />
-        </InputContainer>
-
-        {/* <InputContainer>
-          <label>
-            Re-Password
-            <ErrorMsj>
-              {errors.passwordConfirmation && (
-                <span>{errors.passwordConfirmation.message as string}</span>
-              )}
-            </ErrorMsj>
-          </label>
-          <LoginInput
-            {...register("passwordConfirmation", { required: true })}
-            type="password"
-          />
-        </InputContainer> */}
-
-        <ButtonForm type="submit" />
-      </FormContainer>
-    </LoginContainer>
+      <ButtonForm type="submit" value={t("general.submit") || "submit"} />
+    </FormContainer>
   );
 };
 

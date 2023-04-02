@@ -20,6 +20,11 @@ export class ProjectsCreateResponseDto implements ProjectsCreateOutput {
   @ApiProperty()
   @IsString()
   @IsNotEmpty()
+  ownerId: string;
+
+  @ApiProperty()
+  @IsString()
+  @IsNotEmpty()
   name: string;
 
   @ApiProperty()

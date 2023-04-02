@@ -1,13 +1,14 @@
 import { createContext } from "react";
-import {
-  AuthUsersAxiosRepository,
-  AxiosConfig,
-  AxiosRepository,
-  LocalStorageRepository,
-  WebStorageRepository,
-  RolAxiosRepository,
-  GuildAxiosRepository,
-} from "shared-workers";
+
+import { AuthUsersAxiosRepository } from "../domains/AuthUsers/infrastructure(azul)/AuthAxiosRepository";
+import { GuildAxiosRepository } from "../domains/Guilds/infrastructure/GuildAxiosRepository";
+import { ProjectsAxiosRepository } from "../domains/Projects/infrastructure/ProjectsAxiosRepository";
+import { RolAxiosRepository } from "../domains/Roles/infrastructure/RolAxiosRepository";
+
+import { WebStorageRepository } from "../domains/Shared/domain/WebStorageRepository";
+import { AxiosConfig } from "../domains/Shared/infrastructure/AxiosConfig";
+import { AxiosRepository } from "../domains/Shared/infrastructure/AxiosRepository";
+import { LocalStorageRepository } from "../domains/Shared/infrastructure/LocalStorageRepository";
 
 //TODO: move to process.env.
 const baseURL = "http://localhost:5000/";
@@ -19,6 +20,7 @@ const DIContext = createContext({
   webStorageRepository: {} as WebStorageRepository,
   rolAxiosRepository: {} as RolAxiosRepository,
   guildAxiosRepository: {} as GuildAxiosRepository,
+  projectsAxiosRepository: {} as ProjectsAxiosRepository,
 });
 
 const DIProvider = ({ children }: any) => {
@@ -28,6 +30,7 @@ const DIProvider = ({ children }: any) => {
   const authUsersRepository = new AuthUsersAxiosRepository(axiosRepository);
   const rolAxiosRepository = new RolAxiosRepository(axiosRepository);
   const guildAxiosRepository = new GuildAxiosRepository(axiosRepository);
+  const projectsAxiosRepository = new ProjectsAxiosRepository(axiosRepository);
 
   const webStorageRepository = new LocalStorageRepository();
 
@@ -38,6 +41,7 @@ const DIProvider = ({ children }: any) => {
         webStorageRepository,
         rolAxiosRepository,
         guildAxiosRepository,
+        projectsAxiosRepository,
       }}
     >
       {children}
