@@ -1,6 +1,6 @@
-import { GetAllGuilds } from "shared-workers";
 import { DIContext } from "../contexts/dependency-injection.context";
 import { useContext, useState } from "react";
+import { GetAllGuilds } from "../domains/Guilds/applications/GetGuilds";
 
 const guildsService = () => {
   const { guildAxiosRepository, webStorageRepository } = useContext(DIContext);

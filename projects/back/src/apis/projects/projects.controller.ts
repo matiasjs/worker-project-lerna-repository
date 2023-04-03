@@ -11,6 +11,7 @@ import { AuthenticatedUserGuard } from '@shared/guards/authenticated-user-guard'
 import { ProjectsCreateResponseDto } from './models/projects-create.dto';
 import { ProjectsService } from './projects.service';
 import { LoggedUser } from '@shared/models/logged-user.model';
+import { ProjectsGetManyResponseDto } from './models/projects-get-many.dto';
 
 @ApiTags('Projects')
 @Controller('v1/projects')
@@ -33,10 +34,12 @@ export class ProjectsController {
   }
 
   @ApiOperation({ description: 'Get my own projects' })
-  @ApiCreatedResponse({ type: ProjectsCreateResponseDto })
+  @ApiCreatedResponse({ type: [ProjectsGetManyResponseDto] })
   @Get('myself')
   @UseGuards(JwtAuthGuard)
-  async myself(@ReqUser() user: LoggedUser): Promise<any> {
+  async myself(
+    @ReqUser() user: LoggedUser,
+  ): Promise<ProjectsGetManyResponseDto[]> {
     return this.projectsService.myself(user._id);
   }
 }
