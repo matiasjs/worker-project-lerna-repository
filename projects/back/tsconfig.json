@@ -20,7 +20,6 @@
     "typeRoots": ["node_modules/yup", "../node_modules/@types"],
     "paths": {
       "@*": ["src/*"],
-      "@domains*": ["src/domains/*"],
       "@api*": ["src/api/*"],
       "@shared*": ["src/shared/*"]
     }

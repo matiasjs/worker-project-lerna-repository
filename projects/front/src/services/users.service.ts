@@ -1,40 +1,29 @@
-import { DIContext } from "../contexts/dependency-injection.context";
-import { useContext } from "react";
-import { Params } from "./models/register.params";
 import { useNavigate } from "react-router-dom";
-import { AuthUserLogin } from "../domains/AuthUsers/applications(rojo)/AuthUsersLogin";
-import { AuthUserLogout } from "../domains/AuthUsers/applications(rojo)/AuthUsersLogout";
-import { AuthUserRegister } from "../domains/AuthUsers/applications(rojo)/AuthUsersRegister";
+import {
+  deleteStorage,
+  getLocalStorage,
+} from "../utilities/webStorage/localstorage.utility";
+import { setLocalStorage } from "../utilities/webStorage/localstorage.utility";
 
 const usersService = () => {
   const navigate = useNavigate();
 
-  const { authUsersRepository, webStorageRepository } = useContext(DIContext);
-
-  const authUserLogin = new AuthUserLogin(authUsersRepository);
-  const authUserLogout = new AuthUserLogout(authUsersRepository);
-  const authUserRegister = new AuthUserRegister(authUsersRepository);
-
-  const getLoggedUser = (): string => {
-    return webStorageRepository.get("access_token");
+  const getLoggedUser = (): string | void => {
+    return getLocalStorage<string>("access_token");
   };
 
-  const registerUser = async (params: Params): Promise<void> => {
-    const registeredUser = await authUserRegister.invoke(params);
+  const registerUser = async (params: any): Promise<void> => {
+    return params;
   };
 
   const login = async (email: string, password: string) => {
-    const { accessToken } = await authUserLogin.invoke(email, password);
-
-    webStorageRepository.save("access_token", accessToken);
+    setLocalStorage("access_token", `${email}/${password}`);
 
     navigate("/projects");
   };
 
   const logout = async () => {
-    await authUserLogout.invoke();
-
-    webStorageRepository.delete("access_token");
+    deleteStorage("access_token");
   };
 
   return { login, logout, registerUser, getLoggedUser };

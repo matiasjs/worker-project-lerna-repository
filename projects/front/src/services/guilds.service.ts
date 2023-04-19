@@ -1,21 +1,23 @@
-import { DIContext } from "../contexts/dependency-injection.context";
-import { useContext, useState } from "react";
-import { GetAllGuilds } from "../domains/Guilds/applications/GetGuilds";
+import { useAppDispatch } from "../hooks/redux.hook";
+import { Guilds } from "../models/Guilds";
+import { getAllGuilds } from "../redux/slices";
+import { get } from "../utilities/http/http.axios.utility";
 
 const guildsService = () => {
-  const { guildAxiosRepository, webStorageRepository } = useContext(DIContext);
+  const dispatch = useAppDispatch();
 
-  const getAllGuildsUseCase = new GetAllGuilds(guildAxiosRepository);
+  const _getAllGuilds = async (): Promise<Guilds> => {
+    const guilds: Guilds = await get(
+      "http://localhost:5000/v1/specializations",
+      {}
+    );
 
-  const getAllGuilds = async () => {
-    const guilds = await getAllGuildsUseCase.invoke();
-
-    webStorageRepository.save("guilds", guilds.toString());
+    dispatch(getAllGuilds(guilds));
 
     return guilds;
   };
 
-  return { getAllGuilds };
+  return { getAllGuilds: _getAllGuilds };
 };
 
 export default guildsService;

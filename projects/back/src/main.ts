@@ -1,6 +1,3 @@
-const moduleAlias = require('module-alias');
-moduleAlias.addAlias('@domains', __dirname + './domains');
-
 declare const module: any;
 
 import { NestFactory } from '@nestjs/core';

@@ -1,22 +1,16 @@
-import { RolesGetAllOutput } from "shared-workers";
-import { DIContext } from "../contexts/dependency-injection.context";
-import { useContext } from "react";
-import { GetAllRoles } from "../domains/Roles/applications/GetRoles";
+import { Roles } from "../models/Roles";
+import { setLocalStorage } from "../utilities/webStorage/localstorage.utility";
 
 const rolesService = () => {
-  const { rolAxiosRepository, webStorageRepository } = useContext(DIContext);
+  const _getAllRoles = async (): Promise<Roles> => {
+    const roles: Roles = [];
 
-  const getAllRolesUseCase = new GetAllRoles(rolAxiosRepository);
-
-  const getAllRoles = async (): Promise<RolesGetAllOutput> => {
-    const roles = await getAllRolesUseCase.invoke();
-
-    webStorageRepository.save("roles", roles.toString());
+    setLocalStorage("roles", roles);
 
     return roles;
   };
 
-  return { getAllRoles };
+  return { getAllRoles: _getAllRoles };
 };
 
 export default rolesService;

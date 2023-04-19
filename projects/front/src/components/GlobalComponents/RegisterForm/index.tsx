@@ -12,11 +12,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import schema from "./models/schema.yup";
 import rolesService from "../../../services/roles.service";
 import { useEffect, useState } from "react";
-import {
-  RolesEnum,
-  RolesGetAllOutput,
-  SpecializationsGetAllOutput,
-} from "shared-workers";
+import { RolesEnum, RolesGetAllOutput } from "shared-workers";
 import guildsService from "../../../services/guilds.service";
 import IFormInputs from "./models/register-form-inputs.interface";
 import InputField from "../../UI/Form/InputField";
@@ -24,6 +20,8 @@ import InputField from "../../UI/Form/InputField";
 import { IoPerson } from "react-icons/io5";
 import { MdEmail } from "react-icons/md";
 import { FaKey } from "react-icons/fa";
+import { Guilds } from "../../../models/Guilds";
+import { SelectOption } from "../../../models/Shared/SelectOption.interface";
 
 interface Props {
   rol: RolesEnum;
@@ -33,10 +31,14 @@ const RegisterForm = ({ rol }: Props) => {
   const { t } = useTranslation();
 
   const [roles, setRoles] = useState<RolesGetAllOutput>([]);
-  const [guilds, setGuilds] = useState<SpecializationsGetAllOutput>([]);
+  const [guilds, setGuilds] = useState<Guilds>([]);
 
-  const [guildsSelectOptions, setGuildsSelectOptions] = useState<any[]>([]);
-  const [rolesSelectOptions, setRolesSelectOptions] = useState<any[]>([]);
+  const [guildsSelectOptions, setGuildsSelectOptions] = useState<
+    SelectOption[]
+  >([]);
+  const [rolesSelectOptions, setRolesSelectOptions] = useState<SelectOption[]>(
+    []
+  );
 
   const { getAllRoles } = rolesService();
   const { getAllGuilds } = guildsService();
@@ -90,6 +92,7 @@ const RegisterForm = ({ rol }: Props) => {
   });
 
   const onSubmit = async (data: IFormInputs) => {
+    // call to service
     console.log("DATA", data);
   };
 
