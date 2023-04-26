@@ -1,4 +1,4 @@
-import Projects from "../../components/GlobalComponents/Projects";
+import Projects from "./Projects";
 
 const ProjectsPage = () => {
   return <Projects />;
