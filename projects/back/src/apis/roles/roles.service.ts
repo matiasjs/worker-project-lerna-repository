@@ -2,10 +2,10 @@ import { Injectable } from '@nestjs/common';
 import { InjectPinoLogger, PinoLogger } from 'nestjs-pino';
 
 import { RolesGetAllOutput } from 'shared-workers';
-import { RolesGetAll } from '@domains/Roles/application/RolesGetAll';
 import { RedisRepository } from '@domains/Shared/infrastructure/RedisRepository';
 import { RolesGetAllResponse } from '@domains/Shared/application/responses/RolesGetAllResponse';
-import { RolesCreate } from '@domains/Roles/application/RolesCreate';
+import { RolesGetAll } from '@domains/roles/application/RolesGetAll';
+import { RolesCreate } from '@domains/roles/application/RolesCreate';
 
 @Injectable()
 export class RolesService {

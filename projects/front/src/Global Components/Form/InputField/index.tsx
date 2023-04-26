@@ -31,8 +31,8 @@ const InputField = ({
     setTypeState(!hidePassword ? "password" : "text");
   };
 
-  if (height && height < 40) {
-    height = 40;
+  if (height && height < 50) {
+    height = 50;
   }
 
   return (
@@ -43,7 +43,7 @@ const InputField = ({
         <ChildrenContainer id="asd">{children}</ChildrenContainer>
       ) : (
         <InputFieldInput
-          id="InputFieldInput"
+          id={`InputFieldInput${type}`}
           type={typeState}
           required={required}
           placeholder={placeholder}

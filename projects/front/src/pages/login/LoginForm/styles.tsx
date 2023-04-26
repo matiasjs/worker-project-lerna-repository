@@ -5,11 +5,21 @@ export const FormContainer = styled.form`
   flex-direction: column;
   align-items: center;
   gap: 45px;
-  height: 100%;
+  height: 100vh;
   justify-content: center;
   align-content: center;
   flex-wrap: nowrap;
 `;
+
+export const FormCard  = styled.div`
+  min-height: 250px;
+  width: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+`
 
 export const InputFieldContainer = styled.div`
   width: 100%;
