@@ -1,6 +1,6 @@
+export * from "./translates";
 export * from "./translates/en/translation";
 export * from "./translates/es/translation";
-export { default as translates } from "./translates";
 export * from "./types/Address";
 export * from "./types/AggregateRoot";
 export * from "./types/Nullable";

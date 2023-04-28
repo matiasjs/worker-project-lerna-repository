@@ -1,29 +1,29 @@
 import { Module, ValidationPipe } from '@nestjs/common';
+import { ConfigModule } from '@nestjs/config';
+import { authConfig } from './apis/login/config/login.config';
+import { LoginModule } from './apis/login/login.module';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { ConfigModule, ConfigType } from '@nestjs/config';
-import { LoginModule } from './apis/login/login.module';
-import { authConfig } from './apis/login/config/login.config';
 
-import { LoggerModule } from 'nestjs-pino';
-import { WorkersModule } from './apis/workers/workers.module';
-import { BasicStrategy } from './shared/guards/strategies/basic.strategy';
-import { PassportModule } from '@nestjs/passport';
-import { JwtStrategy } from './shared/guards/strategies/jwt.strategy';
 import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core';
-import { CommonHttpInterceptor } from './shared/interceptors/http.interceptor';
-import { CommonHttpExceptionFilter } from './shared/filters/http.filter';
-import { SharedModule } from './shared/common.module';
-import { UsersModule } from './apis/users/users.module';
-import { usersConfig } from './apis/users/config/users.config';
-import { RolesModule } from './apis/roles/roles.module';
-import { rolesConfig } from './apis/roles/config/roles.config';
 import { JwtService } from '@nestjs/jwt';
+import { PassportModule } from '@nestjs/passport';
 import { jwtConfig } from '@shared/configs/jwt.config';
-import { ProjectsModule } from './apis/projects/projects.module';
+import { LoggerModule } from 'nestjs-pino';
+import { specializationsConfig } from './apis/guilds/config/specializations.config';
+import { SpecializationsModule } from './apis/guilds/guilds.module';
 import { projectsConfig } from './apis/projects/config/projects.config';
-import { SpecializationsModule } from './apis/specializations/specializations.module';
-import { specializationsConfig } from './apis/specializations/config/specializations.config';
+import { ProjectsModule } from './apis/projects/projects.module';
+import { rolesConfig } from './apis/roles/config/roles.config';
+import { RolesModule } from './apis/roles/roles.module';
+import { usersConfig } from './apis/users/config/users.config';
+import { UsersModule } from './apis/users/users.module';
+import { WorkersModule } from './apis/workers/workers.module';
+import { SharedModule } from './shared/common.module';
+import { CommonHttpExceptionFilter } from './shared/filters/http.filter';
+import { BasicStrategy } from './shared/guards/strategies/basic.strategy';
+import { JwtStrategy } from './shared/guards/strategies/jwt.strategy';
+import { CommonHttpInterceptor } from './shared/interceptors/http.interceptor';
 
 @Module({
   imports: [

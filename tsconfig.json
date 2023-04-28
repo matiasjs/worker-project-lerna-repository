@@ -12,7 +12,8 @@
     "sourceMap": true,
     "lib": ["es6"],
     "resolveJsonModule": true,
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": false
   },
   "exclude": ["node_modules", "**/*.spec.ts"]
 }
