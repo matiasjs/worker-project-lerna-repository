@@ -1,16 +1,8 @@
-import { FieldPathValues } from "react-hook-form";
-
-export default interface IFormInputs extends FieldPathValues<any, any> {
+export default interface IFormInputs {
   name: string;
   surname: string;
-  rol: {
-    value: string;
-    label: string;
-  };
-  guil: {
-    value: string;
-    label: string;
-  }[];
+  rolId: string;
+  guildIds: string[];
   email: string;
   password: string;
 }
