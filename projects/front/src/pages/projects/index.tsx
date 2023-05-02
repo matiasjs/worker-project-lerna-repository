@@ -1,13 +1,28 @@
+import { Project } from "@/models/project.model";
+import { getMyOwnProjects } from "@/redux/slices/projects/actions";
+import { useAppDispatch } from "@/redux/store";
+import { useEffect } from "react";
 import { useSelector } from "react-redux";
-import Projects from "./Projects";
-
+import ProjectCard from "./components/ProjectCard";
+import { ProjectsContainer } from "./styles";
 
 const ProjectsPage = () => {
-  const { isLoggedIn, user } = useSelector((state: any) => state.auth)
+  const ownProjects: Project[] = useSelector((state: any) => state.ownProjects);
+  const dispatch = useAppDispatch();
 
-  console.log(isLoggedIn)
+  useEffect(() => {
+    dispatch(getMyOwnProjects());
+  }, []);
 
-  return <>Projects funciona {user.accessToken}</>
+  return (
+    <ProjectsContainer>
+      <h1>PROJECTS</h1>
+
+      {ownProjects.map((project) => (
+        <ProjectCard key={project._id} project={project} />
+      ))}
+    </ProjectsContainer>
+  );
 };
 
 export default ProjectsPage;
