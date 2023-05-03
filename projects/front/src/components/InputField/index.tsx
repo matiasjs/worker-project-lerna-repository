@@ -10,6 +10,7 @@ interface InputFieldProps {
   required?: boolean;
   height?: number;
   useFormProps?: any;
+  defaultValue?: any;
   children?: ReactElement;
 }
 
@@ -20,6 +21,7 @@ const InputField = ({
   icon,
   height,
   useFormProps,
+  defaultValue,
   children,
 }: InputFieldProps) => {
   const [hidePassword, setHidePassword] = useState(true);
@@ -47,6 +49,8 @@ const InputField = ({
           type={typeState}
           required={required}
           placeholder={placeholder}
+          value={defaultValue}
+          {...useFormProps}
         />
       )}
 

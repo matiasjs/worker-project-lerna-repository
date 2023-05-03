@@ -6,9 +6,11 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "typesafe-i18n": "typesafe-i18n"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.5",
     "axios": "^1.3.6",
     "i18next": "^22.4.14",
@@ -20,6 +22,11 @@
     "react-redux": "^8.0.5",
     "react-select": "^5.7.2",
     "styled-components": "^5.3.9",
+<<<<<<< HEAD
+=======
+    "typesafe-i18n": "^5.24.3",
+    "typescript": "4.9.5",
+>>>>>>> 533b5a2bfa5b3ae695ec631f855f6c71fe3c0997
     "yup": "^1.1.1"
   },
   "devDependencies": {
