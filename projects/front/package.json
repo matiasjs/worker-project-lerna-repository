@@ -12,14 +12,7 @@
   "dependencies": {
     "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.5",
-    "@types/node": "18.15.3",
-    "@types/react": "18.0.28",
-    "@types/react-dom": "18.0.11",
-    "@types/styled-components": "^5.1.26",
-    "@types/yup": "^0.32.0",
     "axios": "^1.3.6",
-    "eslint": "8.38.0",
-    "eslint-config-next": "13.3.0",
     "i18next": "^22.4.14",
     "next": "13.3.0",
     "react": "18.2.0",
@@ -29,11 +22,22 @@
     "react-redux": "^8.0.5",
     "react-select": "^5.7.2",
     "styled-components": "^5.3.9",
+<<<<<<< HEAD
+=======
     "typesafe-i18n": "^5.24.3",
     "typescript": "4.9.5",
+>>>>>>> 533b5a2bfa5b3ae695ec631f855f6c71fe3c0997
     "yup": "^1.1.1"
   },
   "devDependencies": {
-    "@types/cookie": "^0.5.1"
+    "@types/node": "18.15.3",
+    "@types/react": "18.0.28",
+    "@types/react-dom": "18.0.11",
+    "@types/styled-components": "^5.1.26",
+    "@types/yup": "^0.32.0",
+    "@types/cookie": "^0.5.1",
+    "eslint": "8.38.0",
+    "eslint-config-next": "13.3.0",
+    "typescript": "4.9.5"
   }
 }
