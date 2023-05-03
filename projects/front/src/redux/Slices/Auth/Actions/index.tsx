@@ -1,4 +1,4 @@
-import authService from "@/services/auth.service";
+import authService from "@/services/Auth.service";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 // ----> actions

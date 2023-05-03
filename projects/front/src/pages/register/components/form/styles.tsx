@@ -1,5 +1,5 @@
+import styled from "@emotion/styled";
 import Select from "react-select";
-import styled from "styled-components";
 
 export const SelectInput = styled(Select)`
   height: 100%;

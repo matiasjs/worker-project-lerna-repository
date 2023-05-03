@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const FormContainer = styled.form`
   display: flex;
@@ -11,7 +11,7 @@ export const FormContainer = styled.form`
   flex-wrap: nowrap;
 `;
 
-export const FormCard  = styled.div`
+export const FormCard = styled.div`
   min-height: 250px;
   width: 350px;
   display: flex;
@@ -19,7 +19,7 @@ export const FormCard  = styled.div`
   justify-content: center;
   align-items: center;
   gap: 15px;
-`
+`;
 
 export const InputFieldContainer = styled.div`
   width: 100%;

@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "@emotion/styled";
 
 export const ProjectCardContainer = styled.div`
   background-color: #49beec12;
