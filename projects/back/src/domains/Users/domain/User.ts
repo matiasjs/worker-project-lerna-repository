@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb';
-import { AggregateRoot } from 'shared-workers';
+import { Address, AggregateRoot } from 'shared-workers';
 
 interface UserPrimitives {
   _id?: any;
@@ -18,6 +18,7 @@ interface UserPrimitives {
     _id: string;
     description: string;
   }[];
+  address: Address;
 }
 
 interface UserPrimitivesMongoDb {
@@ -29,6 +30,7 @@ interface UserPrimitivesMongoDb {
   rank: number;
   rolId: ObjectId;
   specializationsId: ObjectId[];
+  address: Address;
 }
 
 export class User extends AggregateRoot {
@@ -41,6 +43,7 @@ export class User extends AggregateRoot {
     readonly rank: number,
     readonly rolId: string,
     readonly specializationsId: string[],
+    readonly address: Address,
     readonly rol?: { _id: string; description: string },
     readonly specializations?: { _id: string; description: string }[],
   ) {
@@ -58,6 +61,7 @@ export class User extends AggregateRoot {
       plainData.rolId?.toString() || plainData.rolId,
       plainData.specializationsId?.map((spe) => spe.toString()) ||
         plainData.specializationsId,
+      plainData.address,
       plainData.rol,
       plainData.specializations,
     );
@@ -73,6 +77,7 @@ export class User extends AggregateRoot {
       rank: this.rank,
       rolId: this.rolId,
       specializationsId: this.specializationsId,
+      address: this.address,
       rol: this.rol,
       specializations: this.specializations,
     };
@@ -90,6 +95,7 @@ export class User extends AggregateRoot {
       specializationsId: this.specializationsId.map(
         (specializationId) => new ObjectId(specializationId),
       ),
+      address: this.address,
     };
   }
 }

@@ -1,3 +1,5 @@
+import { Address } from "../Address";
+
 export interface ProjectsGetManyUsersOutput {
   _id: string;
   name: string;
@@ -22,17 +24,7 @@ export interface ProjectsGetManyWorkersOutput {
 export interface ProjectsGetManyOutput {
   _id?: string;
   name: string;
-  address: {
-    country: string;
-    state: string;
-    city: string;
-    street: string;
-    number: string;
-    zip_code: string;
-    floor: string;
-    tower: string;
-    department: string;
-  };
+  address: Address;
   ownerId: string;
   description: string;
   workers?: ProjectsGetManyWorkersOutput[];

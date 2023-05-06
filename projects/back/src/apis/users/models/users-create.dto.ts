@@ -2,6 +2,7 @@ import {
   IsEmail,
   IsNotEmpty,
   IsNumber,
+  IsObject,
   IsOptional,
   IsString,
   IsStrongPassword,
@@ -45,6 +46,25 @@ export class UserCreateInputDto implements UserCreateInput {
   @IsString({ each: true })
   @IsNotEmpty()
   specializationsId: string[];
+
+  @ApiProperty()
+  @IsObject()
+  @IsNotEmpty()
+  address: {
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+    number: number;
+    zip_code: string;
+    floor: string;
+    tower: string;
+    department: string;
+    coordinates: {
+      lat: string;
+      long: string;
+    };
+  };
 }
 
 export class UserCreateResponseDto implements UserCreateOutput {
@@ -95,4 +115,8 @@ export class UserCreateResponseDto implements UserCreateOutput {
   @ApiProperty()
   @IsOptional()
   specializations?: any[];
+
+  @ApiProperty()
+  @IsNotEmpty()
+  address?: any;
 }

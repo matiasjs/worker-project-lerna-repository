@@ -1,5 +1,5 @@
 import { ObjectId } from 'mongodb';
-import { AggregateRoot, Address } from 'shared-workers';
+import { Address, AggregateRoot } from 'shared-workers';
 
 interface ProjectWorkersPrimitives {
   workerId: string;
@@ -37,7 +37,7 @@ export class Project extends AggregateRoot {
   constructor(
     readonly _id: any,
     readonly name: string,
-    readonly address: any,
+    readonly address: Address,
     readonly description: string,
     readonly ownerId: string,
     readonly workers?: any[],

@@ -29,11 +29,15 @@ export interface ProjectsCreateResponse {
     state: string;
     city: string;
     street: string;
-    number: string;
+    number: number;
     zip_code: string;
     floor: string;
     tower: string;
     department: string;
+    coordinates: {
+      lat: string;
+      long: string;
+    };
   };
   workers: ProjectsCreateWorkerResponse[];
 }
