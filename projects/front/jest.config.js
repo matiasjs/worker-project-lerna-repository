@@ -9,6 +9,8 @@ const customJestConfig = {
   testEnvironment: "jest-environment-jsdom",
   moduleNameMapper: {
     "^@/(.*)$": "<rootDir>/src/$1",
+    "^@/redux/(.*)$": "<rootDir>/src/redux/$1",
   },
 };
+
 module.exports = createJestConfig(customJestConfig);
