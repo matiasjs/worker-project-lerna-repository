@@ -1,7 +1,7 @@
 import InputField from "@/components/InputField";
 import { login } from "@/redux/slices/auth/actions";
 import { t } from "i18next";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 import { FaKey } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 
@@ -60,7 +60,11 @@ const LoginPage = () => {
           height={50}
         />
 
-        <ButtonForm type="submit" value={t("general.submit") || "submit"} />
+        <ButtonForm
+          type="submit"
+          name="submit"
+          value={t("general.submit") || "submit"}
+        />
       </FormCard>
     </FormContainer>
   );

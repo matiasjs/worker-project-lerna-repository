@@ -9,7 +9,8 @@
   "scripts": {
     "build": "npx lerna run build",
     "start": "npx lerna run dev",
-    "db:start": "docker-compose up -d"
+    "db:start": "docker-compose up -d",
+    "test": "yarn --cwd ./projects/back/ test && yarn --cwd ./projects/front/ test"
   },
   "workspaces": [
     "projects/*"

@@ -6,13 +6,14 @@ const initialState: any[] = [];
 const guilds = createSlice({
   name: "guilds",
   initialState,
-  extraReducers: {
-    [getAllGuilds.fulfilled.toString()]: (state, action) => {
-      return action.payload;
-    },
-    [getAllGuilds.rejected.toString()]: (state, action) => {
-      return [];
-    },
+  extraReducers(builder) {
+    builder
+      .addCase(getAllGuilds.fulfilled.toString(), (state, action) => {
+        return (action as any).payload;
+      })
+      .addCase(getAllGuilds.rejected.toString(), (state, action) => {
+        return [];
+      });
   },
   reducers: {},
 });
