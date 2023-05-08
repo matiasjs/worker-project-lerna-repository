@@ -1,6 +1,6 @@
 {
   "name": "shared-workers",
-  "version": "1.0.3-alpha.0",
+  "version": "1.0.4-alpha.0",
   "private": false,
   "description": "> TODO: description",
   "author": "Matias Ringa <ringa.matias@gmail.com>",
@@ -34,5 +34,5 @@
     "@types/node": "^18.11.18",
     "@types/yup": "^0.32.0"
   },
-  "gitHead": "e8cd4be817062219122ba9bd929cc299e3088245"
+  "gitHead": "e37542a41ec6bf76b37b5dd51f150b1810018cf3"
 }
