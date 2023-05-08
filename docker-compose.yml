@@ -8,11 +8,12 @@ services:
       - MONGO_INITDB_ROOT_USERNAME=admin
       - MONGO_INITDB_ROOT_PASSWORD=p@ssw0rd
     volumes:
-      - ../mongo-data/db:/data/db
+      - ${MONGO_HOST_DATA}:/data/db
     ports:
       - "27017:27017"
 
   redis:
+    container_name: redis
     image: "redis:latest"
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
