@@ -3,7 +3,7 @@
   "version": "1.0.0-alpha.0",
   "description": "> TODO: description",
   "author": "Matias Ringa <ringa.matias@gmail.com>",
-  "private": false,
+  "private": true,
   "license": "UNLICENSED",
   "scripts": {
     "build": "nest build",
@@ -104,5 +104,6 @@
   },
   "bugs": {
     "url": "https://github.com/matiasjs/worker-project-lerna-repository/issues"
-  }
+  },
+  "gitHead": "d3806c9d133ba13451e8b0c5e250e63855592cbe"
 }

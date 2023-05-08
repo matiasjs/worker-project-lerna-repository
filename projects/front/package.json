@@ -1,7 +1,7 @@
 {
   "name": "front",
   "version": "1.0.0-alpha.0",
-  "private": false,
+  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -49,5 +49,6 @@
     "react-router-dom": "^6.11.1",
     "redux-mock-store": "^1.5.4",
     "typescript": "^5.0.4"
-  }
+  },
+  "gitHead": "d3806c9d133ba13451e8b0c5e250e63855592cbe"
 }

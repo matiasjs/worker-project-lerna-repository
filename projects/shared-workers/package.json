@@ -1,7 +1,7 @@
 {
   "name": "shared-workers",
   "version": "0.0.0",
-  "private": true,
+  "private": false,
   "description": "> TODO: description",
   "author": "Matias Ringa <ringa.matias@gmail.com>",
   "homepage": "https://github.com/matiasjs/worker-project-lerna-repository#readme",
