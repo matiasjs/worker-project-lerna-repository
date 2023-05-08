@@ -2,9 +2,9 @@ import {
   IsEmail,
   IsNotEmpty,
   IsNumber,
+  IsObject,
   IsOptional,
   IsString,
-  IsStrongPassword,
 } from 'class-validator';
 
 import { ApiProperty } from '@nestjs/swagger';
@@ -60,4 +60,23 @@ export class UserGetByEmailResponseDto implements UserGetByEmailOutput {
   @ApiProperty()
   @IsOptional()
   specializations?: any[];
+
+  @ApiProperty()
+  @IsObject()
+  @IsNotEmpty()
+  address: {
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+    number: number;
+    zip_code: string;
+    floor: string;
+    tower: string;
+    department: string;
+    coordinates: {
+      lat: string;
+      long: string;
+    };
+  };
 }

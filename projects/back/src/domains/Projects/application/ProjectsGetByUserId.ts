@@ -1,6 +1,6 @@
+import { ProjectsCreateResponse } from '@domains/Shared/application/responses/ProjectsCreateResponse';
 import { Injectable } from '@nestjs/common/decorators';
 import { ProjectsRepository } from '../domain/ProjectRepository';
-import { ProjectsCreateResponse } from '@domains/Shared/application/responses/ProjectsCreateResponse';
 
 interface Params {
   _id: string;

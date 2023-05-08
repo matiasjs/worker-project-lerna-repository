@@ -8,6 +8,8 @@ const mongoClient = new mongo.MongoClient(`mongodb://localhost:27017`, {
 });
 
 mongoClient.connect().then(async (client) => {
+  await client.db().dropDatabase({ dbName: 'workers' });
+
   const db = client.db('workers');
 
   console.log(`Mongodb Repository DB: workers`);
@@ -17,9 +19,13 @@ mongoClient.connect().then(async (client) => {
   await db.createCollection('projects').catch(() => console.log('proj Exist'));
   await db.createCollection('users').catch(() => console.log('users Exist'));
 
-  db.collection('roles').createIndex({ description: 1 }, { unique: true });
-  db.collection('guilds').createIndex({ description: 1 }, { unique: true });
-  db.collection('users').createIndex({ email: 1 }, { unique: true });
+  await db
+    .collection('roles')
+    .createIndex({ description: 1 }, { unique: true });
+  await db
+    .collection('guilds')
+    .createIndex({ description: 1 }, { unique: true });
+  await db.collection('users').createIndex({ email: 1 }, { unique: true });
 
   const rolesInsert = await db
     .collection('roles')
@@ -28,10 +34,10 @@ mongoClient.connect().then(async (client) => {
       { description: 'user' },
       { description: 'business' },
       { description: 'worker' },
-    ])
-    .catch(() => console.log('roles filled'));
+    ]);
 
-  db.collection('guilds')
+  await db
+    .collection('guilds')
     .insertMany([
       { description: 'carpenter' },
       { description: 'electrician' },
@@ -47,22 +53,32 @@ mongoClient.connect().then(async (client) => {
       { description: 'cleaning-person' },
       { description: 'decorator' },
       { description: 'curtain-installer' },
-    ])
-    .catch(() => console.log('guilds filled'));
+    ]);
 
   if (rolesInsert)
-    db.collection('users')
-      .insertOne({
-        rolId: rolesInsert.insertedIds[0],
-        name: 'admin',
-        surname: 'admin',
-        password: 'password',
-        email: 'admin@gmail.com',
-        rank: 0,
-      })
-      .catch(() => console.log('user filled'));
-
-  console.log('users filled');
+    await db.collection('users').insertOne({
+      rolId: rolesInsert.insertedIds[0],
+      name: 'admin',
+      surname: 'admin',
+      password: 'password',
+      email: 'admin@gmail.com',
+      rank: 0,
+      address: {
+        country: 'country',
+        state: 'state',
+        city: 'city',
+        street: 'street',
+        number: 0,
+        zip_code: 'zip_code',
+        floor: 'floor',
+        tower: 'tower',
+        department: 'department',
+        coordinates: {
+          lat: 'lat',
+          lon: 'lon',
+        },
+      },
+    });
 
   process.exit();
 });

@@ -1,12 +1,4 @@
-import {
-  IsEmpty,
-  IsNotEmpty,
-  isNotEmptyObject,
-  IsObject,
-  IsOptional,
-  isString,
-  IsString,
-} from 'class-validator';
+import { IsNotEmpty, IsObject, IsOptional, IsString } from 'class-validator';
 
 import { ApiProperty } from '@nestjs/swagger';
 import {
@@ -35,11 +27,15 @@ export class ProjectsCreateResponseDto implements ProjectsCreateOutput {
     state: string;
     city: string;
     street: string;
-    number: string;
+    number: number;
     zip_code: string;
     floor: string;
     tower: string;
     department: string;
+    coordinates: {
+      lat: string;
+      long: string;
+    };
   };
 
   @ApiProperty()

@@ -1,18 +1,21 @@
 {
   "name": "front",
-  "version": "0.1.0",
+  "version": "1.0.0-alpha.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "test": "jest",
+    "test:watch": "jest --watch",
     "typesafe-i18n": "typesafe-i18n"
   },
   "dependencies": {
     "@emotion/styled": "^11.10.8",
     "@hookform/resolvers": "^3.1.0",
     "@reduxjs/toolkit": "^1.9.5",
+    "@testing-library/jest-dom": "^5.16.5",
     "axios": "^1.3.6",
     "i18next": "^22.4.14",
     "next": "13.3.0",
@@ -22,18 +25,30 @@
     "react-icons": "^4.8.0",
     "react-redux": "^8.0.5",
     "react-select": "^5.7.2",
+    "shared-workers": "*",
     "typesafe-i18n": "^5.24.3",
     "typescript": "4.9.5",
     "yup": "^1.1.1"
   },
   "devDependencies": {
+    "@testing-library/dom": "^9.2.0",
+    "@testing-library/jest-dom": "^5.16.5",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.4.3",
     "@types/cookie": "^0.5.1",
-    "@types/node": "18.15.3",
-    "@types/react": "18.0.28",
+    "@types/jest": "^29.5.1",
+    "@types/node": "^20.1.0",
+    "@types/react": "^18.2.6",
     "@types/react-dom": "18.0.11",
     "@types/yup": "^0.32.0",
+    "babel-jest": "^29.5.0",
     "eslint": "8.38.0",
     "eslint-config-next": "13.3.0",
-    "typescript": "4.9.5"
-  }
+    "jest": "^29.5.0",
+    "jest-environment-jsdom": "^29.5.0",
+    "react-router-dom": "^6.11.1",
+    "redux-mock-store": "^1.5.4",
+    "typescript": "^5.0.4"
+  },
+  "gitHead": "d3806c9d133ba13451e8b0c5e250e63855592cbe"
 }

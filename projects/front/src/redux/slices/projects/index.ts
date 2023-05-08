@@ -7,13 +7,14 @@ const initialState: Project[] = [];
 const ownProjects = createSlice({
   name: "ownProjects",
   initialState,
-  extraReducers: {
-    [getMyOwnProjects.fulfilled.toString()]: (state, action) => {
-      return action.payload;
-    },
-    [getMyOwnProjects.rejected.toString()]: (state, action) => {
-      return [];
-    },
+  extraReducers(builder) {
+    builder
+      .addCase(getMyOwnProjects.fulfilled.toString(), (state, action) => {
+        return (action as any).payload;
+      })
+      .addCase(getMyOwnProjects.rejected.toString(), (state, action) => {
+        return [];
+      });
   },
   reducers: {},
 });

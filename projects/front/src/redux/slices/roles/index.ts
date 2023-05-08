@@ -6,13 +6,14 @@ const initialState: any[] = [];
 const roles = createSlice({
   name: "roles",
   initialState,
-  extraReducers: {
-    [getAllRoles.fulfilled.toString()]: (state, action) => {
-      return action.payload;
-    },
-    [getAllRoles.rejected.toString()]: (state, action) => {
-      return [];
-    },
+  extraReducers(builder) {
+    builder
+      .addCase(getAllRoles.fulfilled.toString(), (state, action) => {
+        return (action as any).payload;
+      })
+      .addCase(getAllRoles.rejected.toString(), (state, action) => {
+        return [];
+      });
   },
   reducers: {},
 });

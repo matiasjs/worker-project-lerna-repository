@@ -1,6 +1,7 @@
 {
   "name": "shared-workers",
-  "version": "0.0.0",
+  "version": "1.0.1-alpha.0",
+  "private": false,
   "description": "> TODO: description",
   "author": "Matias Ringa <ringa.matias@gmail.com>",
   "homepage": "https://github.com/matiasjs/worker-project-lerna-repository#readme",
@@ -26,7 +27,8 @@
     "url": "https://github.com/matiasjs/worker-project-lerna-repository/issues"
   },
   "dependencies": {
-    "styled-components": "^5.3.6"
+    "styled-components": "^5.3.6",
+    "typescript": "^5.0.4"
   },
   "devDependencies": {
     "@types/node": "^18.11.18",

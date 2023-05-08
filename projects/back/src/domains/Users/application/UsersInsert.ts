@@ -1,7 +1,7 @@
-import { UsersRepository } from '../domain/UsersRepository';
+import { InsertUserResponse } from '@domains/Shared/application/responses/InsertUserResponse';
 import { Injectable } from '@nestjs/common/decorators';
 import { User } from '../domain/User';
-import { InsertUserResponse } from '@domains/Shared/application/responses/InsertUserResponse';
+import { UsersRepository } from '../domain/UsersRepository';
 
 interface UserInserInput {
   email: string;
@@ -11,6 +11,21 @@ interface UserInserInput {
   rank: number;
   rolId: string;
   specializationsId: string[];
+  address: {
+    country: string;
+    state: string;
+    city: string;
+    street: string;
+    number: number;
+    zip_code: string;
+    floor: string;
+    tower: string;
+    department: string;
+    coordinates: {
+      lat: string;
+      long: string;
+    };
+  };
 }
 
 @Injectable()

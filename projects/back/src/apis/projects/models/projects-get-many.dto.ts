@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsString, IsNotEmpty, IsObject, IsOptional } from 'class-validator';
+import { IsNotEmpty, IsObject, IsOptional, IsString } from 'class-validator';
 import {
   ProjectsGetManyOutput,
   ProjectsGetManyWorkersOutput,
@@ -24,11 +24,15 @@ export class ProjectsGetManyResponseDto implements ProjectsGetManyOutput {
     state: string;
     city: string;
     street: string;
-    number: string;
+    number: number;
     zip_code: string;
     floor: string;
     tower: string;
     department: string;
+    coordinates: {
+      lat: string;
+      long: string;
+    };
   };
 
   @ApiProperty()
