@@ -48,7 +48,7 @@
     "redis": "^4.6.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
-    "shared-workers": "*",
+    "shared-workers": "1.0.4-alpha.0",
     "short-uuid": "^4.2.2"
   },
   "devDependencies": {
