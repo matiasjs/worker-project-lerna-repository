@@ -22,7 +22,9 @@ services:
 
   back:
     container_name: back
-    image: "worker-project-backend:latest"
+    image: worker-project-backend
+    build:
+      dockerfile: ./projects/front/Dockerfile
     environment:
       - NODE_ENV=development
       - APP_SERVER=1.0.0
@@ -48,7 +50,9 @@ services:
       - "5000:5000"
 
   front:
+    image: worker-project-frontend
+    build:
+      dockerfile: ./projects/front/Dockerfile
     container_name: front
-    image: "worker-project-frontend:latest"
     ports:
       - "3000:3000"
