@@ -1,8 +1,9 @@
 {
-  "name": "front",
-  "version": "1.0.0-alpha.0",
+  "name": "worker-project-frontend",
+  "version": "0.1.0",
   "private": true,
   "scripts": {
+    "docker:build": "docker build -f Dockerfile -t worker-project-frontend ../../",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
@@ -27,7 +28,7 @@
     "react-select": "^5.7.2",
     "shared-workers": "*",
     "typesafe-i18n": "^5.24.3",
-    "typescript": "4.9.5",
+    "use-sync-external-store": "^1.2.0",
     "yup": "^1.1.1"
   },
   "devDependencies": {
@@ -49,6 +50,5 @@
     "react-router-dom": "^6.11.1",
     "redux-mock-store": "^1.5.4",
     "typescript": "^5.0.4"
-  },
-  "gitHead": "d3806c9d133ba13451e8b0c5e250e63855592cbe"
+  }
 }

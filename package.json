@@ -7,15 +7,19 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "npx lerna run build",
     "start": "npx lerna run dev",
+    "build": "npx lerna run build",
+    "docker:build": "yarn docker:build:front && yarn docker:build:back",
+    "docker:build:front": "cd projects/front && yarn docker:build",
+    "docker:build:back": "cd projects/back && yarn docker:build",
     "db:start": "docker-compose up -d",
+    "db:init": "npx lerna run db:init",
     "test": "yarn --cwd ./projects/back/ test && yarn --cwd ./projects/front/ test"
   },
   "workspaces": [
     "projects/*"
   ],
   "devDependencies": {
-    "lerna": "^6.6.1"
+    "lerna": "^6.6.2"
   }
 }

@@ -2,8 +2,9 @@
   "$schema": "node_modules/lerna/schemas/lerna-schema.json",
   "useWorkspaces": true,
   "version": "1.0.4-alpha.0",
+  "npmClient": "yarn",
   "packages": [
-    "project/back",
+    "projects/back",
     "projects/front",
     "projects/shared-workers"
   ]
