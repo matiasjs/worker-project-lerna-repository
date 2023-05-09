@@ -1,6 +1,6 @@
 {
   "name": "worker-project-backend",
-  "version": "0.0.1",
+  "version": "1.0.0-alpha.0",
   "description": "> TODO: description",
   "author": "Matias Ringa <ringa.matias@gmail.com>",
   "private": true,
@@ -48,7 +48,7 @@
     "redis": "^4.6.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.2.0",
-    "shared-workers": "^0.0.0",
+    "shared-workers": "*",
     "short-uuid": "^4.2.2"
   },
   "devDependencies": {
@@ -105,5 +105,6 @@
   },
   "bugs": {
     "url": "https://github.com/matiasjs/worker-project-lerna-repository/issues"
-  }
+  },
+  "gitHead": "d3806c9d133ba13451e8b0c5e250e63855592cbe"
 }
